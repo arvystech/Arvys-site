@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Courses - ARVYS Tech Academy</title>
+
+    <!-- Fonts and Styles -->
+    <link href="assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/vendors/aos/aos.css" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/courses.css">
+
+    <!-- Theme Script -->
+    <script>
+        (function () {
+            const storedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-bs-theme', storedTheme);
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Modern Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="loader-logo">
+            <div class="spinner"></div>
+            <div class="loader-text">LOADING</div>
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+
+    <div class="site-wrap">
+
+        <!-- Header -->
+        <header class="fbs__net-navbar navbar navbar-expand-lg dark position-fixed" aria-label="Navbar">
+            <div class="container d-flex align-items-center justify-content-between" style="height: 60px;">
+                <a class="navbar-brand w-auto" href="index.html">
+                    <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                    <img class="logo light img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
+                </a>
+
+                <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1">
+                    <div class="offcanvas-header">
+                        <a class="logo-link" id="fbs__net-navbarsLabel" href="index.html">
+                            <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg"
+                                alt="Logo">
+                            <img class="logo light img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                        </a>
+                        <button class="btn-close btn-close-black" type="button" data-bs-dismiss="offcanvas"></button>
+                    </div>
+
+                    <div class="offcanvas-body align-items-lg-center">
+                        <ul class="navbar-nav nav me-auto ps-lg-5 mb-2 mb-lg-0 mx-auto text-center fw-bold">
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./about.html">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link active"
+                                    href="./courses.html">Courses</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link"
+                                    href="./Industrial-training.html">Industrial Training</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./staffs.html">Team</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./it-register.html">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-2 sign-btns">
+                    <a class="p-0 text-black" href="./login.html" style="text-decoration: none;">Log In</a>
+                    <a class="btn rounded-pill px-3 btn-sm d-flex align-items-center"
+                        style="color: white !important; height: 30px;" href="./it-register.html">Register</a>
+
+                    <button class="fbs__net-navbar-toggler ms-2" data-bs-toggle="offcanvas"
+                        data-bs-target="#fbs__net-navbars">
+                        <svg class="fbs__net-icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="21" y1="6" x2="3" y2="6"></line>
+                            <line x1="15" y1="12" x2="3" y2="12"></line>
+                            <line x1="17" y1="18" x2="3" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="courses-hero">
+            <div class="container text-center" data-aos="fade-up">
+                <h1 class="display-4 fw-bold mb-3 text-white">Explore Our Courses</h1>
+                <p class="lead mb-4 text-white" style="max-width: 700px; margin: 0 auto; opacity: 0.9;">
+                    Transform your career with industry-leading tech courses designed by experts.
+                    Learn practical skills that matter.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="row" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Active Courses</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Students Enrolled</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Expert Instructors</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-number">4.8</div>
+                            <div class="stat-label">Average Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Grid -->
+        <section class="py-5 bg-light">
+            <div class="container pt-5 pb-5">
+                <div class="row g-4" id="coursesGrid">
+
+                    <!-- Course 1: Full Stack Development -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="intermediate" data-aos="fade-up">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/images/business/business-img-2-min.jpg" alt="Full Stack"
+                                        class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge intermediate">Intermediate</span>
+                                    <h5 class="course-title">Full Stack Development</h5>
+                                    <p class="course-desc">Master frontend and backend with React, Node.js, and MongoDB.
+                                        Build complete web applications.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 12 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 350+</span>
+                                    </div>
+                                    <div class="course-price">₦80,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 2: Data Science -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="intermediate" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/images/business/business-img-10-min.jpg" alt="Data Science"
+                                        class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge intermediate">Intermediate</span>
+                                    <h5 class="course-title">Data Science & Analytics</h5>
+                                    <p class="course-desc">Learn Python, machine learning, data visualization, and
+                                        statistical analysis for data-driven decisions.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 14 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 280+</span>
+                                    </div>
+                                    <div class="course-price">₦85,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 3: Mobile Development -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="intermediate" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/images/business/business-img-6-min.jpg" alt="Mobile Dev"
+                                        class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge intermediate">Intermediate</span>
+                                    <h5 class="course-title">Mobile App Development</h5>
+                                    <p class="course-desc">Build cross-platform mobile apps with React Native and
+                                        Flutter. Deploy to iOS and Android.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 10 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 220+</span>
+                                    </div>
+                                    <div class="course-price">₦75,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 4: UI/UX Design -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="beginner" data-aos="fade-up">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/images/business/business-img-3-min.jpg" alt="UI/UX"
+                                        class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge beginner">Beginner</span>
+                                    <h5 class="course-title">UI/UX Design Fundamentals</h5>
+                                    <p class="course-desc">Master Figma, design principles, user research, wireframing,
+                                        and prototyping for beautiful interfaces.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 8 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 310+</span>
+                                    </div>
+                                    <div class="course-price">₦65,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 5: Cybersecurity -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="advanced" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/public/IMAGES/code.png" alt="Cybersecurity" class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge advanced">Advanced</span>
+                                    <h5 class="course-title">Cybersecurity Fundamentals</h5>
+                                    <p class="course-desc">Learn ethical hacking, network security, penetration testing,
+                                        and protect against cyber threats.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 12 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 180+</span>
+                                    </div>
+                                    <div class="course-price">₦90,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 6: DevOps -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="advanced" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/public/IMAGES/code2.png" alt="DevOps" class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge advanced">Advanced</span>
+                                    <h5 class="course-title">DevOps Engineering</h5>
+                                    <p class="course-desc">Master CI/CD, Docker, Kubernetes, AWS, and modern deployment
+                                        strategies for scalable systems.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 14 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 150+</span>
+                                    </div>
+                                    <div class="course-price">₦95,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 7: Frontend -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="beginner" data-aos="fade-up">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/public/IMAGES/coding.png" alt="Frontend" class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge beginner">Beginner</span>
+                                    <h5 class="course-title">Frontend Web Development</h5>
+                                    <p class="course-desc">Learn HTML, CSS, JavaScript, and React. Build responsive,
+                                        interactive websites from scratch.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 8 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 420+</span>
+                                    </div>
+                                    <div class="course-price">₦60,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 8: Backend -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="intermediate" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/images/business/business-img-2-min.jpg" alt="Backend"
+                                        class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge intermediate">Intermediate</span>
+                                    <h5 class="course-title">Backend Development</h5>
+                                    <p class="course-desc">Master Node.js, Express, databases, APIs, and server-side
+                                        programming for robust applications.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 10 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 290+</span>
+                                    </div>
+                                    <div class="course-price">₦70,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Course 9: Digital Marketing -->
+                    <div class="col-md-6 col-lg-4 course-item" data-level="beginner" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <a href="course-details.html" class="text-decoration-none">
+                            <div class="course-card">
+                                <div class="overflow-hidden">
+                                    <img src="./assets/images/business/business-img-10-min.jpg" alt="Marketing"
+                                        class="course-img">
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-badge beginner">Beginner</span>
+                                    <h5 class="course-title">Digital Marketing Mastery</h5>
+                                    <p class="course-desc">Learn SEO, social media, content marketing, analytics, and
+                                        grow your online presence effectively.</p>
+                                    <div class="course-meta">
+                                        <span><i class="bi bi-clock me-1"></i> 6 Weeks</span>
+                                        <span><i class="bi bi-people me-1"></i> 380+</span>
+                                    </div>
+                                    <div class="course-price">₦55,000</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-5 custom-footer" id="footer">
+            <div class="container">
+                <div class="row g-4 align-items-start">
+                    <div class="col-lg-4">
+                        <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="img-fluid mb-3"
+                            style="max-width: 120px;">
+                        <h2 class="mb-0 text-white">The No. 1 Tech Academy for tertiary students.</h2>
+                        <p class="text-white small" style="width: 85%;">
+                            At ARVYS, we operate with the belief that excellence is attainable through consistency.
+                        </p>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Quick Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./index.html" class="text-decoration-none text-white">Home</a></li>
+                            <li><a href="./courses.html" class="text-decoration-none text-white">Courses</a></li>
+                            <li><a href="./staffs.html" class="text-decoration-none text-white">Team</a></li>
+                            <li><a href="./Industrial-training.html" class="text-decoration-none text-white">Industrial
+                                    Training</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Company</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./about.html" class="text-decoration-none text-white">About Us</a></li>
+                            <li><a href="./index.html#contact" class="text-decoration-none text-white">Contact Us</a>
+                            </li>
+                            <li><a href="./it-register.html" class="text-decoration-none text-white">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h6 class="fw-semibold mb-3 text-white">Join Our Newsletter</h6>
+                        <form class="input-group">
+                            <input type="email" class="form-control bg-white rounded-start-pill"
+                                placeholder="Enter your email" required>
+                            <button type="submit" class="btn rounded-end-pill"
+                                style="background-color: #6C65EF;">Subscribe</button>
+                        </form>
+                        <div class="mt-3">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4 border-muted">
+
+                <div class="text-center small text-white">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script> ARVYS. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/aos/aos.js"></script>
+    <script src="./assets/js/page-loader.js"></script>
+
+    <script>
+        // Init AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Course filtering logic
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const courseItems = document.querySelectorAll('.course-item');
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Remove active from all
+                filterPills.forEach(p => p.classList.remove('active'));
+                // Add active to clicked
+                pill.classList.add('active');
+
+                const filter = pill.dataset.filter;
+
+                courseItems.forEach(item => {
+                    const itemLevel = item.dataset.level;
+                    if (filter === 'all' || itemLevel === filter) {
+                        item.style.display = 'block';
+                        // Small delay to allow display:block to apply before opacity transition
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

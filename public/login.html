@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Login - ARVYS Tech Academy</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+    <style>
+        :root {
+            --primary-color: #0016C2;
+            --primary-dark: #001090;
+            --text-dark: #111827;
+            --text-gray: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Eudoxus-meduim', sans-serif;
+        }
+
+        @font-face {
+            font-family: Eudoxus-extrabold;
+            src: url(./assets/Eudoxus-Sans-main/Eudoxus-Sans-font/EudoxusSans-ExtraBold.ttf);
+        }
+
+        @font-face {
+            font-family: Eudoxus-meduim;
+            src: url(./assets/Eudoxus-Sans-main/Eudoxus-Sans-font/EudoxusSans-Medium.ttf);
+        }
+
+
+        @font-face {
+            font-family: poppins-regular;
+            src: url(./assets/poppins/Poppins-Regular.ttf);
+        }
+
+        h1 {
+            font-family: Eudoxus-extrabold !important;
+            font-weight: 800 !important;
+        }
+
+        h2,
+        h3 {
+            font-family: Eudoxus-meduim !important;
+        }
+
+        p,
+        a,
+        button {
+            font-family: poppins-regular !important;
+        }
+
+        p {
+            color: #646679 !important;
+        }
+
+        /* LEFT SIDE */
+        .brand-col {
+            background: linear-gradient(135deg, #0016C2 0%, #001090 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 4rem;
+        }
+
+        /* Keep logo and text above circles */
+        .brand-col>a,
+        .brand-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Circles behind */
+        .brand-col::before,
+        .brand-col::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .brand-col::before {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .brand-col::after {
+            width: 300px;
+            height: 300px;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Bottom text stays bottom via auto margin */
+        .brand-content {
+            margin-top: auto;
+        }
+
+        .brand-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .brand-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 400px;
+        }
+
+        /* RIGHT SIDE */
+        .form-col {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .form-wrapper {
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* MOBILE OVERRIDES */
+        @media (max-width:768px) {
+            body {
+                overflow-y: auto;
+                background: white;
+            }
+
+            .login-row {
+                height: auto;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            .brand-col {
+                display: none !important;
+            }
+
+            .form-col {
+                min-height: 100vh;
+                padding: 0;
+                justify-content: flex-start;
+                background: white;
+            }
+
+            /* Mobile Header acting as Hero */
+            .mobile-header {
+                background: linear-gradient(135deg, #0016C2 0%, #001090 100%);
+                padding: 3rem 1.75rem 4rem;
+                position: relative;
+                overflow: hidden;
+                margin-bottom: -2rem;
+                z-index: 1;
+                box-shadow: none;
+            }
+
+            .mobile-header::before {
+                content: '';
+                position: absolute;
+                width: 240px;
+                height: 240px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 50%;
+                top: -60px;
+                right: -60px;
+                z-index: 0;
+            }
+
+            .mobile-header::after {
+                content: '';
+                position: absolute;
+                width: 180px;
+                height: 180px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 50%;
+                bottom: -20px;
+                left: -40px;
+                z-index: 0;
+            }
+
+            .mobile-header .mobile-logo {
+                filter: brightness(0) invert(1);
+                position: relative;
+                z-index: 2;
+                height: 30px;
+                margin-bottom: 1.5rem;
+            }
+
+            .page-title {
+                color: white !important;
+                font-size: 1.5rem !important;
+                margin-top: 0 !important;
+                position: relative;
+                z-index: 2;
+            }
+
+            .page-subtitle {
+                color: rgba(255, 255, 255, 0.9) !important;
+                font-size: 0.9375rem !important;
+                margin-bottom: 0 !important;
+                position: relative;
+                z-index: 2;
+            }
+
+            /* Form Card on Mobile - 100% width, no shadow */
+            .form-wrapper {
+                padding: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #loginForm {
+                background: white;
+                padding: 2rem 1.5rem;
+                /* Increased top padding slightly for visual balance */
+                border-radius: 0;
+                box-shadow: none;
+                margin-top: 0;
+                min-height: 50vh;
+                /* Ensure it covers bottom */
+            }
+
+            /* Badge reverts to desktop style but ensures margin */
+            .info-badge {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* FORM COMPONENT STYLES */
+        .mobile-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .mobile-logo {
+            height: 48px;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            margin-top: 20px;
+        }
+
+        .page-subtitle {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 12px;
+            background: #fafafa;
+            transition: 0.2s;
+        }
+
+        .form-control:focus {
+            background: #fff;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 22, 194, 0.1);
+            outline: none;
+        }
+
+        .password-input-group {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 46px;
+            height: 100%;
+            background: none;
+            border: none;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-check-input {
+            width: 1.1rem;
+            height: 1.1rem;
+            border: 1.5px solid #d1d5db;
+            border-radius: 4px;
+            accent-color: var(--primary-color);
+        }
+
+        .forgot-link {
+            font-size: 0.875rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* INFO BADGE */
+        .info-badge {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8125rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .info-badge i {
+            font-size: 1rem;
+            margin-top: 0.1rem;
+        }
+
+        /* Button hover effects */
+        .btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 22, 194);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 22, 194, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #2e27e0;
+            border-color: #515cd5;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid g-0">
+        <div class="row g-0 login-row">
+
+            <!-- LEFT -->
+            <div class="col-md-6 col-lg-5 brand-col d-none d-md-flex">
+                <a href="./index.html">
+                    <img src="assets/public/IMAGES/logos/footer-logo.svg" style="height:32px;" alt="ARVYS">
+                </a>
+
+                <div class="brand-content">
+                    <h2>Shape your<br>future with<br>ARVYS.</h2>
+                    <p style="color: #eff6ff !important;">Join thousands of students mastering the skills of tomorrow.
+                    </p>
+                </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="col-md-6 col-lg-7 form-col">
+                <div class="form-wrapper">
+
+                    <div class="mobile-header">
+                        <div class="d-md-none mb-3">
+                            <a href="./index.html">
+                                <img src="assets/public/IMAGES/logos/logo.svg" class="mobile-logo" alt="ARVYS">
+                            </a>
+                        </div>
+
+                        <!-- Desktop Logo -->
+                        <p class="page-subtitle mt-4">Welcome back! Please enter your matric number to access your portal.</p>
+                    </div>
+
+                    <form id="loginForm">
+                        <!-- Moved Info Badge inside form as requested -->
+                        <div class="info-badge">
+                            <i class="bi bi-info-circle-fill"></i>
+                            <div>Provide accurate information for official records.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="matric">Matric Number</label>
+                            <input type="text" id="matric" class="form-control" placeholder="e.g. ARV/2025/001"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="password">Password</label>
+                            <div class="password-input-group">
+                                <input type="password" id="password" class="form-control" required>
+                                <button type="button" class="password-toggle" onclick="togglePassword()">
+                                    <i class="bi bi-eye" id="toggleIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                                <span class="form-check-label">Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+
+                        <a class="btn btn-primary rounded-pill px-3 btn-md w-100" style="color: white !important;"
+                            href="./it-register.html">Sign In</a>
+
+                        <p class="register-text text-center">
+                            Don't have an account? <a href="./it-register.html">Register</a>
+                        </p>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const field = document.getElementById('password');
+            const icon = document.getElementById('toggleIcon');
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.replace('bi-eye', 'bi-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', e => {
+            e.preventDefault();
+            alert('Login logic goes here.');
+        });
+    </script>
+
+</body>
+
+</html>

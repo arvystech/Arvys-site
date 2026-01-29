@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff Details - ARVYS Tech Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <style>
+        /* Hero Section - Same as About Page */
+        /* Hero Section - Redesigned Layout */
+        .instructor-hero {
+            background: linear-gradient(135deg, #0016C2 0%, #4444b5 100%);
+            padding: 120px 0 160px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instructor-hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+            top: -200px;
+            right: -100px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero-title-main {
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-family: 'Eudoxus-meduim', sans-serif;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        /* Floating Profile Card */
+        .profile-overlay-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 2px 2px rgba(0, 22, 194, 0.1);
+            margin-top: -130px;
+            position: relative;
+            z-index: 3;
+            border: 1px solid rgba(0, 22, 194, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-image-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #F7F7F8;
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info-content {
+            flex-grow: 1;
+        }
+
+        .profile-name {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--bs-heading-color);
+            margin-bottom: 4px;
+            font-family: 'Eudoxus-meduim', sans-serif;
+        }
+
+        .profile-discipline {
+            font-size: 1rem;
+            color: var(--bs-primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .social-link-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: #F7F7F8;
+            color: #646679;
+            border-radius: 12px;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link-pill:hover {
+            background: var(--bs-primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Content Cards - Minimal Style */
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 22, 194, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            border-color: rgba(0, 22, 194, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 22, 194, 0.1);
+        }
+
+        .content-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--bs-heading-color);
+            font-family: 'Eudoxus-meduim', sans-serif;
+        }
+
+        /* Stats Section - Minimal Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card-minimal {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(0, 22, 194, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card-minimal:hover {
+            border-color: rgba(0, 22, 194, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 22, 194, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--bs-primary);
+            font-family: 'Eudoxus-extrabold', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .stat-text {
+            color: #646679;
+            font-size: 0.95rem;
+        }
+
+        /* Skill Tags */
+        .skill-tag {
+            display: inline-block;
+            background: #F7F7F8;
+            color: #646679;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .skill-tag:hover {
+            border-color: rgba(0, 22, 194, 0.2);
+            background: rgba(0, 22, 194, 0.05);
+            color: var(--bs-primary);
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            padding: 20px;
+            background: #F7F7F8;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border-left: 3px solid #9cbbff;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(0, 22, 194, 0.03);
+        }
+
+        .experience-role {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--bs-heading-color);
+            margin-bottom: 6px;
+        }
+
+        .experience-company {
+            color: var(--bs-primary);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .experience-duration {
+            color: #9CA3AF;
+            font-size: 0.875rem;
+            margin-bottom: 10px;
+        }
+
+        /* Course Cards - Compact */
+        .course-card-inline {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 22, 194, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .course-card-inline:hover {
+            border-color: rgba(0, 22, 194, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 22, 194, 0.1);
+        }
+
+        .course-thumbnail {
+            width: 160px;
+            height: 120px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .course-info {
+            padding: 16px;
+            flex: 1;
+        }
+
+        .course-title-inline {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--bs-heading-color);
+            margin-bottom: 6px;
+        }
+
+        .course-meta-inline {
+            display: flex;
+            gap: 16px;
+            color: #646679;
+            font-size: 0.875rem;
+        }
+
+        .course-meta-inline span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Testimonial */
+        .testimonial-card {
+            background: #F7F7F8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #646679;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--bs-heading-color);
+        }
+
+        .testimonial-role {
+            font-size: 0.875rem;
+            color: #9CA3AF;
+        }
+
+        /* Certifications List */
+        .cert-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cert-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 22, 194, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #646679;
+        }
+
+        .cert-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cert-list i {
+            color: var(--bs-primary);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 767px) {
+            .instructor-hero {
+                padding: 100px 0 120px 0;
+            }
+
+            .hero-title-main {
+                font-size: 2.25rem;
+                text-align: center;
+            }
+
+            .profile-overlay-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px;
+                gap: 20px;
+                margin-top: -80px;
+            }
+
+            .profile-image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-name {
+                font-size: 1.5rem;
+            }
+
+            .social-link-pill {
+                margin: 0 4px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .stat-card-minimal {
+                padding: 16px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 20px;
+            }
+
+            .course-card-inline {
+                flex-direction: column;
+            }
+
+            .course-thumbnail {
+                width: 100%;
+                height: 180px;
+            }
+
+            .experience-item {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Modern Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="loader-logo">
+        </div>
+    </div>
+
+    <div class="site-wrap">
+
+        <!-- Header -->
+        <header class="fbs__net-navbar navbar navbar-expand-lg dark position-fixed mb-5" aria-label="Navbar">
+            <div class="container d-flex align-items-center justify-content-between" style="height: 60px;">
+                <a class="navbar-brand w-auto" href="index.html">
+                    <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                    <img class="logo light img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
+                </a>
+
+                <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1">
+                    <div class="offcanvas-header">
+                        <a class="logo-link" id="fbs__net-navbarsLabel" href="index.html">
+                            <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg"
+                                alt="Logo">
+                            <img class="logo light img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                        </a>
+                        <button class="btn-close btn-close-black" type="button" data-bs-dismiss="offcanvas"></button>
+                    </div>
+
+                    <div class="offcanvas-body align-items-lg-center">
+                        <ul class="navbar-nav nav me-auto ps-lg-5 mb-2 mb-lg-0 mx-auto text-center fw-bold">
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./about.html">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./courses.html">Courses</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link"
+                                    href="./Industrial-training.html">Industrial Training</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link active" href="./staffs.html">Team</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./it-register.html">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-2 sign-btns">
+                    <a class="p-0 text-black" href="./login.html" style="text-decoration: none;">Log In</a>
+                    <a class="btn rounded-pill px-3 btn-sm d-flex align-items-center"
+                        style="color: white !important; height: 30px;" href="./it-register.html">Register</a>
+
+                    <button class="fbs__net-navbar-toggler ms-2" data-bs-toggle="offcanvas"
+                        data-bs-target="#fbs__net-navbars">
+                        <svg class="fbs__net-icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="21" y1="6" x2="3" y2="6"></line>
+                            <line x1="15" y1="12" x2="3" y2="12"></line>
+                            <line x1="17" y1="18" x2="3" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section - Side-by-Side Floating Overlay -->
+        <section class="instructor-hero">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <h1 class="hero-title-main">Meet Our Expert<br>Instructors</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Overlay Card -->
+        <div class="container">
+            <div class="profile-overlay-card" data-aos="fade-up">
+                <div class="profile-image-container">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300" alt="Chinedu Okoro">
+                </div>
+                <div class="profile-info-content">
+                    <span class="profile-discipline">Lead Instructor</span>
+                    <h2 class="profile-name">Chinedu Okoro</h2>
+                    <p class="mb-3 text-secondary">Senior Full Stack Developer & Tech Educator</p>
+                    <div class="social-links-container">
+                        <a href="#" class="social-link-pill"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-link-pill"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link-pill"><i class="bi bi-github"></i></a>
+                        <a href="#" class="social-link-pill"><i class="bi bi-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card-minimal">
+                        <div class="stat-number">1,200+</div>
+                        <div class="stat-text">Students Taught</div>
+                    </div>
+                    <div class="stat-card-minimal">
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-text">Average Rating</div>
+                    </div>
+                    <div class="stat-card-minimal">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-text">Courses Created</div>
+                    </div>
+                    <div class="stat-card-minimal">
+                        <div class="stat-number">8 Years</div>
+                        <div class="stat-text">Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Main Column -->
+                    <div class="col-lg-8">
+                        <!-- About -->
+                        <div class="content-card">
+                            <h3>About Chinedu</h3>
+                            <p style="color: #646679; line-height: 1.7;">
+                                Chinedu is a seasoned full-stack developer with over 8 years of experience building
+                                scalable web applications for startups and Fortune 500 companies. His passion for
+                                teaching
+                                stems from his belief that anyone can learn to code with the right guidance and
+                                dedication.
+                            </p>
+                            <p style="color: #646679; line-height: 1.7;">
+                                He specializes in making complex concepts simple and digestible. Throughout his career,
+                                he
+                                has trained over 1,200 students who now work at companies like Google, Microsoft, and
+                                various local tech startups.
+                            </p>
+                        </div>
+
+                        <!-- Experience -->
+                        <div class="content-card">
+                            <h3>Professional Experience</h3>
+                            <div class="experience-item">
+                                <div class="experience-role">Senior Full Stack Instructor</div>
+                                <div class="experience-company">ARVYS Tech Academy</div>
+                                <div class="experience-duration">2020 - Present</div>
+                                <p style="color: #646679; margin: 0;">
+                                    Leading curriculum development and teaching advanced full-stack development courses.
+                                </p>
+                            </div>
+
+                            <div class="experience-item">
+                                <div class="experience-role">Lead Developer</div>
+                                <div class="experience-company">TechBridge Solutions</div>
+                                <div class="experience-duration">2017 - 2020</div>
+                                <p style="color: #646679; margin: 0;">
+                                    Led a team of 8 developers in building enterprise web applications.
+                                </p>
+                            </div>
+
+                            <div class="experience-item">
+                                <div class="experience-role">Full Stack Developer</div>
+                                <div class="experience-company">Digital Innovations Ltd</div>
+                                <div class="experience-duration">2015 - 2017</div>
+                                <p style="color: #646679; margin: 0;">
+                                    Developed scalable web applications using modern frameworks.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Courses -->
+                        <div class="content-card">
+                            <h3>Courses Taught</h3>
+
+                            <div class="course-card-inline">
+                                <img src="./assets/images/Frame 123.png" alt="Course" class="course-thumbnail">
+                                <div class="course-info">
+                                    <h4 class="course-title-inline">Full Stack Development Bootcamp</h4>
+                                    <p style="color: #646679; font-size: 0.9rem; margin-bottom: 10px;">
+                                        Master both frontend and backend development with React and Node.js.
+                                    </p>
+                                    <div class="course-meta-inline">
+                                        <span><i class="bi bi-people-fill"></i> 350+</span>
+                                        <span><i class="bi bi-star-fill"></i> 4.9</span>
+                                        <span><i class="bi bi-clock-fill"></i> 12 Weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="course-card-inline">
+                                <img src="./assets/images/Frame 123.png" alt="Course" class="course-thumbnail">
+                                <div class="course-info">
+                                    <h4 class="course-title-inline">Advanced JavaScript & ES6+</h4>
+                                    <p style="color: #646679; font-size: 0.9rem; margin-bottom: 10px;">
+                                        Deep dive into modern JavaScript and design patterns.
+                                    </p>
+                                    <div class="course-meta-inline">
+                                        <span><i class="bi bi-people-fill"></i> 280+</span>
+                                        <span><i class="bi bi-star-fill"></i> 5.0</span>
+                                        <span><i class="bi bi-clock-fill"></i> 8 Weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="course-card-inline">
+                                <img src="./assets/images/Frame 123.png" alt="Course" class="course-thumbnail">
+                                <div class="course-info">
+                                    <h4 class="course-title-inline">React & State Management</h4>
+                                    <p style="color: #646679; font-size: 0.9rem; margin-bottom: 10px;">
+                                        Build powerful React applications with modern best practices.
+                                    </p>
+                                    <div class="course-meta-inline">
+                                        <span><i class="bi bi-people-fill"></i> 420+</span>
+                                        <span><i class="bi bi-star-fill"></i> 4.8</span>
+                                        <span><i class="bi bi-clock-fill"></i> 10 Weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-4">
+                        <!-- Skills -->
+                        <div class="content-card">
+                            <h3>Expertise</h3>
+                            <div>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Express</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">TypeScript</span>
+                                <span class="skill-tag">GraphQL</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="content-card">
+                            <h3>Certifications</h3>
+                            <ul class="cert-list">
+                                <li>
+                                    <i class="bi bi-award-fill"></i>
+                                    <span>AWS Certified Solutions Architect</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-award-fill"></i>
+                                    <span>MongoDB Certified Developer</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-award-fill"></i>
+                                    <span>Google Cloud Professional</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-award-fill"></i>
+                                    <span>Scrum Master Certified</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Student Testimonials -->
+                        <div class="content-card">
+                            <h3>Student Feedback</h3>
+
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">
+                                    "Chinedu's teaching style is exceptional. He breaks down complex topics into
+                                    understandable chunks."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://i.pravatar.cc/150?img=1" alt="Student" class="testimonial-avatar">
+                                    <div>
+                                        <div class="testimonial-name">John Wilson</div>
+                                        <div class="testimonial-role">Frontend Developer</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">
+                                    "Best instructor I've had! I landed my first developer job within weeks of
+                                    graduating."
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://i.pravatar.cc/150?img=5" alt="Student" class="testimonial-avatar">
+                                    <div>
+                                        <div class="testimonial-name">Vivian Effong</div>
+                                        <div class="testimonial-role">Full Stack Developer</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-5 custom-footer" id="footer">
+            <div class="container">
+                <div class="row g-4 align-items-start">
+                    <div class="col-lg-4">
+                        <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="img-fluid mb-3"
+                            style="max-width: 120px;">
+                        <h2 class="mb-0 text-white">The No. 1 Tech Academy for tertiary students.</h2>
+                        <p class="text-white small" style="width: 85%;">
+                            At ARVYS, we operate with the belief that excellence is attainable through consistency.
+                        </p>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Quick Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./index.html" class="text-decoration-none text-white">Home</a></li>
+                            <li><a href="./courses.html" class="text-decoration-none text-white">Courses</a></li>
+                            <li><a href="./staffs.html" class="text-decoration-none text-white">Team</a></li>
+                            <li><a href="./Industrial-training.html" class="text-decoration-none text-white">Industrial
+                                    Training</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Company</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./about.html" class="text-decoration-none text-white">About Us</a></li>
+                            <li><a href="./index.html#contact" class="text-decoration-none text-white">Contact Us</a>
+                            </li>
+                            <li><a href="./it-register.html" class="text-decoration-none text-white">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h6 class="fw-semibold mb-3 text-white">Join Our Newsletter</h6>
+                        <form class="input-group">
+                            <input type="email" class="form-control bg-white rounded-start-pill"
+                                placeholder="Enter your email" required>
+                            <button type="submit" class="btn rounded-end-pill"
+                                style="background-color: #6C65EF;">Subscribe</button>
+                        </form>
+
+                        <div class="mt-3">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4 border-muted">
+
+                <div class="text-center small text-white">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script> ARVYS. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/page-loader.js"></script>
+</body>
+
+</html>

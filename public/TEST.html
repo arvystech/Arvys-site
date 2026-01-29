@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Stack Development - ARVYS Tech Academy</title>
+
+    <!-- Fonts and Styles -->
+    <link href="assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/vendors/aos/aos.css" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/courses.css">
+
+    <style>
+        /* Main Content Styles */
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 20px;
+       
+            margin-bottom: 24px;
+            color: var(--bs-heading-color);
+        }
+
+        /* Skills Grid */
+        .skill-item {
+            display: flex;
+            gap: 12px;
+            padding: 16px;
+            background: #F7F7F8;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #EEF2FF;
+            transform: translateY(-2px);
+        }
+
+        .skill-item i {
+            font-size: 1.25rem;
+            color: var(--bs-primary);
+            flex-shrink: 0;
+        }
+
+        /* Curriculum Accordion */
+        .curriculum-item {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .curriculum-item:hover {
+            border-color: var(--bs-primary);
+        }
+
+        .curriculum-header {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #FAFAFA;
+        }
+
+        .curriculum-header:hover {
+            background: #F7F7F8;
+        }
+
+        .curriculum-number {
+            background: var(--bs-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 16px;
+        }
+
+        .curriculum-body {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .curriculum-item.active .curriculum-body {
+            max-height: 500px;
+            padding: 20px 24px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .curriculum-item.active .curriculum-header i {
+            transform: rotate(180deg);
+        }
+
+        .curriculum-header i {
+            transition: transform 0.3s ease;
+        }
+
+        .lesson-item {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #646679;
+        }
+
+        .lesson-item i {
+            color: #10B981;
+        }
+
+        /* Instructor Card */
+        .instructor-profile {
+            display: flex;
+            gap: 20px;
+            padding: 24px;
+            background: #F7F7F8;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .instructor-profile:hover {
+            background: #EEF2FF;
+            transform: translateY(-2px);
+        }
+
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        .instructor-stats {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .instructor-stats span {
+            font-size: 0.875rem;
+            color: #646679;
+        }
+
+        /* Review Card */
+        .review-card {
+            padding: 20px;
+            background: #F7F7F8;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .review-stars {
+            color: #FFA500;
+        }
+
+        /* Sidebar */
+        .sticky-sidebar {
+            position: sticky;
+            top: 90px;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--bs-primary);
+        }
+
+        .includes-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .includes-list li {
+            padding: 12px 0;
+            display: flex;
+            align-items-center;
+            gap: 12px;
+            border-bottom: 1px solid #F0F0F0;
+            color: #646679;
+        }
+
+        .includes-list li:last-child {
+            border-bottom: none;
+        }
+
+        .includes-list i {
+            color: #10B981;
+            font-size: 1.1rem;
+        }
+
+        /* Requirements */
+        .requirement-item {
+            padding: 12px 16px;
+            background: #F7F7F8;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .requirement-item i {
+            color: var(--bs-primary);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background: #FAFAFA;
+        }
+
+        .faq-question:hover {
+            background: #F7F7F8;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #646679;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 20px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Mobile Bottom Bar */
+        .mobile-cta-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 16px;
+            z-index: 1000;
+            display: none;
+        }
+
+        @media (max-width: 991px) {
+            .mobile-cta-bar {
+                display: block;
+            }
+
+            .course-hero-title {
+                font-size: 1.8rem;
+            }
+
+            .sticky-sidebar {
+                position: static;
+            }
+
+            .instructor-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .course-meta-badges {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .meta-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.95rem;
+        }
+
+        .hero-media-wrapper,
+        .enroll-card {
+            position: relative;
+            bottom: 250px;
+        }
+
+        .includes-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .includes-list li {
+            padding: 12px 0;
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid #faf9f9;
+            color: #646679;
+        }
+
+        .includes-list li:last-child {
+            border-bottom: none;
+        }
+
+        .includes-list i {
+            color: #c8cefd;
+            font-size: 1.1rem;
+        }
+    </style>
+
+    <script>
+        (function () {
+            const storedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-bs-theme', storedTheme);
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Modern Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="loader-logo">
+            <div class="spinner"></div>
+            <div class="loader-text">LOADING</div>
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+
+    <div class="site-wrap">
+
+        <!-- Header -->
+        <header class="fbs__net-navbar navbar navbar-expand-lg dark position-fixed" aria-label="Navbar">
+            <div class="container d-flex align-items-center justify-content-between" style="height: 60px;">
+                <a class="navbar-brand w-auto" href="index.html">
+                    <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                    <img class="logo light img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
+                </a>
+
+                <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1">
+                    <div class="offcanvas-header">
+                        <a class="logo-link" id="fbs__net-navbarsLabel" href="index.html">
+                            <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg"
+                                alt="Logo">
+                            <img class="logo light img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                        </a>
+                        <button class="btn-close btn-close-black" type="button" data-bs-dismiss="offcanvas"></button>
+                    </div>
+
+                    <div class="offcanvas-body align-items-lg-center">
+                        <ul class="navbar-nav nav me-auto ps-lg-5 mb-2 mb-lg-0 mx-auto text-center fw-bold">
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./about.html">About Us</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link active"
+                                    href="./courses.html">Courses</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link"
+                                    href="./Industrial-training.html">Industrial Training</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./staffs.html">Team</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./it-register.html">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-2 sign-btns">
+                    <a class="p-0 text-black" href="./login.html" style="text-decoration: none;">Log In</a>
+                    <a class="btn rounded-pill px-3 btn-sm d-flex align-items-center"
+                        style="color: white !important; height: 30px;" href="./it-register.html">Register</a>
+
+                    <button class="fbs__net-navbar-toggler ms-2" data-bs-toggle="offcanvas"
+                        data-bs-target="#fbs__net-navbars">
+                        <svg class="fbs__net-icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="21" y1="6" x2="3" y2="6"></line>
+                            <line x1="15" y1="12" x2="3" y2="12"></line>
+                            <line x1="17" y1="18" x2="3" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- New Hero Section -->
+        <section class="course-hero-v2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <nav aria-label="breadcrumb" class="breadcrumb-custom mb-3">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="./courses.html">Courses</a></li>
+                                <li class="breadcrumb-item"><a href="#">Development</a></li>
+                                <li class="breadcrumb-item active">Full Stack</li>
+                            </ol>
+                        </nav>
+
+                        <h1 class="text-white fw-bold mb-3" style="font-family: 'Eudoxus-extrabold', sans-serif;">Full
+                            Stack Development Bootcamp</h1>
+                        <p class="lead mb-4 text-light style=" opacity: 0.9; line-height: 1.7;">
+                            Become a professional web developer. Master React, Node.js, Express, and MongoDB.
+                            Build real-world projects and launch your tech career.
+                        </p>
+
+                        <div class="course-meta-badges">
+                            <div class="meta-badge">
+                                <i class="bi bi-clock"></i>
+                                <span>12 Weeks</span>
+                            </div>
+                            <div class="meta-badge">
+                                <i class="bi bi-people"></i>
+                                <span>350+ Students</span>
+                            </div>
+                            <div class="meta-badge">
+                                <i class="bi bi-star-fill"></i>
+                                <span>4.9 Rating</span>
+                            </div>
+                            <div class="meta-badge">
+                                <i class="bi bi-bar-chart"></i>
+                                <span>Intermediate Level</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <small class="text-light d-block mb-3">Course Instructors</small>
+                            <div class="d-flex flex-wrap gap-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="./assets/public/IMAGES/team/ayuk.png" class="rounded-circle" width="40"
+                                        height="40" style="object-fit: cover; border: 2px solid white;"
+                                        alt="Eteng Eteng">
+                                    <div>
+                                        <div class="fw-semibold small text-light">Eteng Eteng</div>
+                                        <small class="text-light" style="font-size: 0.75rem;">Lead Instructor</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="./assets/public/IMAGES/students/john.png" class="rounded-circle"
+                                        width="40" height="40" style="object-fit: cover; border: 2px solid white;"
+                                        alt="John Wilson">
+                                    <div>
+                                        <div class="fw-semibold small text-light">John Wilson</div>
+                                        <small class="text-light" style="font-size: 0.75rem;">Backend Expert</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="./assets/public/IMAGES/students/vivian.png" class="rounded-circle"
+                                        width="40" height="40" style="object-fit: cover; border: 2px solid white;"
+                                        alt="Vivian Effong">
+                                    <div>
+                                        <div class="fw-semibold small text-light">Vivian Effong</div>
+                                        <small class="text-light" style="font-size: 0.75rem;">Frontend
+                                            Specialist</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sticky Navigation -->
+        <div class="course-nav-wrapper d-none d-lg-block">
+            <div class="container">
+                <nav class="course-nav">
+                    <a href="#overview" class="course-nav-link active">Overview</a>
+                    <a href="#curriculum" class="course-nav-link">Curriculum</a>
+                    <a href="#instructor" class="course-nav-link">Instructor</a>
+                    <a href="#reviews" class="course-nav-link">Reviews</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Left Content -->
+                    <div class="col-lg-8">
+
+                        <!-- Overview -->
+                        <div id="overview" class="mb-5 scroll-offset" data-aos="fade-up">
+                            <!-- What You'll Learn -->
+                            <div class="content-section" data-aos="fade-up">
+                                <h5 class="section-title">What You'll Learn</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="skill-item">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Build full-stack web applications from scratch</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="skill-item">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Master React.js for dynamic frontend UIs</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="skill-item">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Create RESTful APIs with Node.js and Express</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="skill-item">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Manage databases with MongoDB and SQL</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="skill-item">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Implement authentication and security best practices</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="skill-item">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                            <span>Deploy applications to cloud platforms</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Course Description -->
+                            <div class="content-section" data-aos="fade-up">
+                                <h5 class="section-title">Course Description</h5>
+                                <p class="text-secondary" style="line-height: 1.7;">
+                                    This comprehensive bootcamp is designed to take you from a complete beginner to a
+                                    job-ready full stack developer.
+                                    You will learn the industry-standard MERN stack (MongoDB, Express, React, Node.js)
+                                    through hands-on projects and real-world scenarios.
+                                </p>
+                                <p class="text-secondary mb-0" style="line-height: 1.7;">
+                                    Whether you want to work as a freelancer, join a top tech company, or build your own
+                                    startup, this course provides
+                                    the solid foundation and advanced skills you need to succeed in the modern tech
+                                    landscape.
+                                </p>
+                            </div>
+
+                            <!-- Requirements -->
+                            <div class="content-section" data-aos="fade-up">
+                                <h5 class="section-title">Requirements</h5>
+                                <div class="requirement-item">
+                                    <i class="bi bi-laptop"></i>
+                                    <span>A computer with internet connection (Windows, Mac, or Linux)</span>
+                                </div>
+                                <div class="requirement-item">
+                                    <i class="bi bi-lightbulb"></i>
+                                    <span>Basic understanding of how websites work (helpful but not required)</span>
+                                </div>
+                                <div class="requirement-item">
+                                    <i class="bi bi-heart"></i>
+                                    <span>Passion to learn and build amazing web applications</span>
+                                </div>
+                                <div class="requirement-item">
+                                    <i class="bi bi-clock"></i>
+                                    <span>Commitment of 10-15 hours per week for 12 weeks</span>
+                                </div>
+                            </div>
+
+                            <!-- Curriculum -->
+                            <div class="content-section" data-aos="fade-up">
+                                <h5 class="section-title">Course Curriculum</h5>
+                                <p class="text-secondary mb-4">9 comprehensive modules with 50+ lessons</p>
+
+                                <div class="curriculum-item active">
+                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <div class="curriculum-number">01</div>
+                                            <div>
+                                                <div class="fw-bold">Web Fundamentals & JavaScript</div>
+                                                <small class="text-secondary">Weeks 1-2 • 8 lessons</small>
+                                            </div>
+                                        </div>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="curriculum-body">
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Introduction to HTML5 & Semantic Elements</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>CSS3 Styling, Flexbox & Grid Layout</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Responsive Design Principles</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>JavaScript Basics & ES6+ Features</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-file-text"></i>
+                                            <span><strong>Project:</strong> Build Your First Portfolio Website</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="curriculum-item">
+                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <div class="curriculum-number">02</div>
+                                            <div>
+                                                <div class="fw-bold">Advanced JavaScript & React</div>
+                                                <small class="text-secondary">Weeks 3-5 • 12 lessons</small>
+                                            </div>
+                                        </div>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="curriculum-body">
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Async Programming & Promises</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>React Components & JSX</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>State Management with Hooks</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-file-text"></i>
+                                            <span><strong>Project:</strong> Build a Todo App with React</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="curriculum-item">
+                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <div class="curriculum-number">03</div>
+                                            <div>
+                                                <div class="fw-bold">Backend with Node.js & Express</div>
+                                                <small class="text-secondary">Weeks 6-8 • 10 lessons</small>
+                                            </div>
+                                        </div>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="curriculum-body">
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Node.js Runtime & NPM</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Building RESTful APIs</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Authentication with JWT</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-file-text"></i>
+                                            <span><strong>Project:</strong> Build a Blog API</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="curriculum-item">
+                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <div class="curriculum-number">04</div>
+                                            <div>
+                                                <div class="fw-bold">Database & Full Stack Integration</div>
+                                                <small class="text-secondary">Weeks 9-11 • 10 lessons</small>
+                                            </div>
+                                        </div>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="curriculum-body">
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>MongoDB & Mongoose</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Connecting Frontend to Backend</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-file-text"></i>
+                                            <span><strong>Project:</strong> E-Commerce Application</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="curriculum-item">
+                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
+                                        <div class="d-flex align-items-center flex-grow-1">
+                                            <div class="curriculum-number">05</div>
+                                            <div>
+                                                <div class="fw-bold">Deployment & Capstone Project</div>
+                                                <small class="text-secondary">Week 12 • 6 lessons</small>
+                                            </div>
+                                        </div>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="curriculum-body">
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Git & GitHub Workflows</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Deployment to AWS/Heroku/Vercel</span>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="bi bi-file-text"></i>
+                                            <span><strong>Final Project:</strong> Your Own Full Stack App</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Student Reviews -->
+                            <div class="content-section" data-aos="fade-up">
+                                <h5 class="section-title">Student Reviews</h5>
+                                <div class="d-flex align-items-center gap-3 mb-4">
+
+                                </div>
+
+                                <div class="review-card">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <div class="fw-bold">John Wilson</div>
+                                            <div class="review-stars small">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                        <small class="text-secondary">2 weeks ago</small>
+                                    </div>
+                                    <p class="text-secondary mb-0">
+                                        "The best decision I made for my career. The project-based learning approach
+                                        helped
+                                        me
+                                        understand complex concepts easily. Highly recommended!"
+                                    </p>
+                                </div>
+
+                                <div class="review-card">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <div class="fw-bold">Vivian Effong</div>
+                                            <div class="review-stars small">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-half"></i>
+                                            </div>
+                                        </div>
+                                        <small class="text-secondary">1 month ago</small>
+                                    </div>
+                                    <p class="text-secondary mb-0">
+                                        "Excellent curriculum and amazing support from the instructors. I landed my
+                                        first
+                                        developer
+                                        job just 2 weeks after graduating!"
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ -->
+                            <div class="content-section" data-aos="fade-up">
+                                <h5 class="section-title">Frequently Asked Questions</h5>
+
+                                <div class="faq-item active">
+                                    <div class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>Do I need any prior programming experience?</span>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        No prior programming experience is required. This course is designed for
+                                        complete
+                                        beginners
+                                        and takes you from the basics to advanced full stack development.
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <div class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>What happens if I miss a live session?</span>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        All live sessions are recorded and made available to you within 24 hours. You'll
+                                        have
+                                        lifetime access to all course materials and recordings.
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <div class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>Will I receive a certificate upon completion?</span>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        Yes! Upon successful completion of the course and final project, you'll receive
+                                        a
+                                        verified
+                                        certificate of completion that you can share on LinkedIn and your resume.
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <div class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>Do you offer job placement assistance?</span>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        Yes! We provide career support including resume reviews, interview preparation,
+                                        and
+                                        connections to our network of hiring partners.
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <div class="faq-question" onclick="toggleFAQ(this)">
+                                        <span>What if I'm not satisfied with the course?</span>
+                                        <i class="bi bi-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        We offer a 30-day money-back guarantee. If you're not satisfied with the course
+                                        within the
+                                        first 30 days, we'll provide a full refund, no questions asked.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Right Sidebar (Overlapping) -->
+                    <div class="col-lg-4">
+                        <div class="sidebar-overlap" data-aos="fade-left">
+
+                            <!-- Video/Image Preview -->
+                            <div class="hero-media-wrapper mb-3 bg-white position-relative">
+                                <img src="./assets/images/business/business-img-2-min.jpg" class="w-100"
+                                    style="height: 200px; object-fit: cover;" alt="Preview">
+                                <div class="play-button">
+                                    <i class="bi bi-play-fill text-primary"></i>
+                                </div>
+                                <div class="position-absolute bottom-0 start-0 w-100 p-2 text-center text-white"
+                                    style="background: rgba(0,0,0,0.6); font-size: 0.9rem;">
+                                    Preview this course
+                                </div>
+                            </div>
+
+                            <div class="enroll-card">
+                                <div class="d-flex align-items-center mb-3">
+                                    <h2 class="fw-bold text-primary mb-0">₦80,000</h2>
+                                    <span class="text-decoration-line-through text-muted ms-3">₦120,000</span>
+                                    <span class="badge bg-danger ms-auto">33% OFF</span>
+                                </div>
+
+                                <a href="./it-register.html" class="btn btn-primary w-100 rounded-pill btn-lg mb-3">
+                                    Enroll Now
+                                </a>
+
+                                <h6 class="fw-bold mb-3">This course includes:</h6>
+                                <ul class="includes-list">
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>12 weeks intensive training</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>50+ video lessons</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>5+ Real-world projects</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Certificate of completion</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Career support & mentorship</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Lifetime community access</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Live Q&A sessions</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Full lifetime access</span>
+                                    </li>
+                                </ul>
+
+                                <div class="d-flex gap-2 justify-content-center">
+                                    <button
+                                        class="btn btn-outline-secondary rounded-circle d-flex justify-content-center align-items-center"
+                                        style="width: 44px; height: 44px;">
+                                        <i class="bi bi-share"></i>
+                                    </button>
+                                    <button
+                                        class="btn btn-outline-secondary rounded-circle d-flex justify-content-center align-items-center"
+                                        style="width: 44px; height: 44px;">
+                                        <i class="bi bi-heart"></i>
+                                    </button>
+                                    <button
+                                        class="btn btn-outline-secondary rounded-circle d-flex justify-content-center align-items-center"
+                                        style="width: 44px; height: 44px;">
+                                        <i class="bi bi-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-5 custom-footer" id="footer">
+            <div class="container">
+                <div class="row g-4 align-items-start">
+                    <div class="col-lg-4">
+                        <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="img-fluid mb-3"
+                            style="max-width: 120px;">
+                        <h2 class="mb-0 text-white">The No. 1 Tech Academy for tertiary students.</h2>
+                        <p class="text-white small" style="width: 85%;">
+                            At ARVYS, we operate with the belief that excellence is attainable through consistency.
+                        </p>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Quick Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./index.html" class="text-decoration-none text-white">Home</a></li>
+                            <li><a href="./courses.html" class="text-decoration-none text-white">Courses</a></li>
+                            <li><a href="./staffs.html" class="text-decoration-none text-white">Team</a></li>
+                            <li><a href="./Industrial-training.html" class="text-decoration-none text-white">Industrial
+                                    Training</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Company</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./about.html" class="text-decoration-none text-white">About Us</a></li>
+                            <li><a href="./index.html#contact" class="text-decoration-none text-white">Contact Us</a>
+                            </li>
+                            <li><a href="./it-register.html" class="text-decoration-none text-white">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h6 class="fw-semibold mb-3 text-white">Join Our Newsletter</h6>
+                        <form class="input-group">
+                            <input type="email" class="form-control bg-white rounded-start-pill"
+                                placeholder="Enter your email" required>
+                            <button type="submit" class="btn rounded-end-pill"
+                                style="background-color: #6C65EF;">Subscribe</button>
+                        </form>
+                        <div class="mt-3">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4 border-muted">
+
+                <div class="text-center small text-white">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script> ARVYS. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/aos/aos.js"></script>
+    <script src="./assets/js/page-loader.js"></script>
+
+    <script>
+        // Init AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
+        // Simple Nav Active State
+        const navLinks = document.querySelectorAll('.course-nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

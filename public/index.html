@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARVYS</title>
+
+  <!-- ======= Styles =======-->
+  <link href="assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/vendors/glightbox/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendors/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/staffs.css">
+  <!-- End Styles-->
+
+  <!-- ======= Theme Style =======-->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- End Theme Style-->
+  <!-- ======= Apply theme =======-->
+  <script>
+    // Apply the theme as early as possible to avoid flicker
+    (function () {
+      const storedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-bs-theme', storedTheme);
+    })();
+  </script>
+</head>
+
+<body>
+
+
+  <!-- Modern Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="loader-logo">
+      <div class="spinner"></div>
+      <div class="loader-text">LOADING</div>
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+  <!-- End Page Loader -->
+
+
+  <div class="site-wrap">
+
+    <!-- ======= Header ======= -->
+    <header class="fbs__net-navbar navbar navbar-expand-lg dark position-fixed" aria-label="Navbar">
+      <div class="container d-flex align-items-center justify-content-between" style="height: 60px;">
+        <!-- Start Logo -->
+        <a class="navbar-brand w-auto" href="index.html">
+          <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+          <img class="logo light img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
+        </a>
+        <!-- End Logo -->
+
+        <!-- Start offcanvas nav -->
+        <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1"
+          aria-labelledby="fbs__net-navbarsLabel">
+          <div class="offcanvas-header">
+            <a class="logo-link" id="fbs__net-navbarsLabel" href="index.html">
+              <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
+              <img class="logo light img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+            </a>
+            <button class="btn-close btn-close-black" type="button" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+
+          <div class="offcanvas-body align-items-lg-center">
+            <ul class="navbar-nav nav me-auto ps-lg-5 mb-2 mb-lg-0 mx-auto text-center fw-bold">
+              <li class="nav-item"><a class="nav-link scroll-link active" href="./index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link scroll-link" href="./about.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link scroll-link" href="./courses.html">Courses</a></li>
+              <li class="nav-item"><a class="nav-link scroll-link" href="./Industrial-training.html">Industrial
+                  Training</a></li>
+              <li class="nav-item"><a class="nav-link scroll-link" href="./staffs.html">Team</a></li>
+              <li class="nav-item"><a class="nav-link scroll-link" href="./it-register.html">Register</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End offcanvas nav -->
+
+        <!-- Buttons -->
+        <div class="d-flex align-items-center gap-2 sign-btns">
+          <a class="p-0 text-black" href="./login.html" style="text-decoration: none;">Log In</a>
+          <a class="btn rounded-pill px-3 btn-sm d-flex align-items-center"
+            style="color: white !important; height: 30px;" href="./it-register.html">Register</a>
+
+          <button class="fbs__net-navbar-toggler ms-2" data-bs-toggle="offcanvas" data-bs-target="#fbs__net-navbars"
+            aria-controls="fbs__net-navbars" aria-label="Toggle navigation">
+            <svg class="fbs__net-icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="21" y1="6" x2="3" y2="6"></line>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+              <line x1="17" y1="18" x2="3" y2="18"></line>
+            </svg>
+          </button>
+
+        </div>
+      </div>
+    </header>
+
+
+    <!-- End Header -->
+
+    <!-- ======= Main =======-->
+    <main>
+
+
+      <!-- ======= Hero =======-->
+      <section id="home" class="hero__v6 section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+
+          <div class="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item">
+              <div class="container py-1">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="hero-title mb-3 text-secondary">
+                      The No. 1 <br>
+                      Tech Academy for <br>
+                      <span class="text-primary">tertiary students</span>
+                    </h1>
+                    <p class="hero-description">
+                      This is the first slide description.
+                    </p>
+                    <a class="btn-minimal" href="./about.html">Learn more</a>
+                    <a class="btn btn-primary rounded-pill px-3 btn-sm" style="color: white !important;"
+                      href="./it-register.html">Enroll in a course</a>
+                  </div>
+                  <div class="col-lg-6 text-center">
+                    <img src="./assets/public/IMAGES/coding.png" alt="Slide 1" class="img-fluid rounded-4"
+                      style="max-height: 340px; object-fit: contain;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="container py-1">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="hero-title mb-3">
+                      Master
+                      Software Development
+                      <span class="text-primary">from scratch</span>
+                    </h1>
+                    <a class="btn-minimal" href="./about.html">Learn more</a>
+                    <a class="btn btn-primary rounded-pill px-3 btn-sm" style="color: white !important;"
+                      href="./it-register.html">Enroll in a course</a>
+                  </div>
+                  <div class="col-lg-6 text-center">
+                    <img src="./assets/images/business/business-img-10-min.jpg" alt="Slide 2"
+                      class="img-fluid rounded-4" style="max-height: 340px; object-fit: contain;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+              <div class="container py-1">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="hero-title mb-3">
+                      Unlock
+                      Career Opportunities
+                      <span class="text-primary">In Tech and beyond</span>
+                    </h1>
+                    <a class="btn-minimal" href="./about.html">Learn more</a>
+                    <a class="btn btn-primary rounded-pill px-3 btn-sm" style="color: white !important;"
+                      href="./it-register.html">Enroll in a course</a>
+                  </div>
+                  <div class="col-lg-6 text-center">
+                    <img src="./assets/images/business/business-img-3-min.jpg" alt="Slide 3" class="img-fluid rounded-4"
+                      style="max-height: 340px; object-fit: contain;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+              <div class="container py-1">
+                <div class="row align-items-center">
+                  <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h1 class="hero-title mb-3">
+                      Learn from
+                      Industry Experts
+                      <span class="text-primary">Anywhere, Anytime</span>
+                    </h1>
+                    <a class="btn-minimal" href="./about.html">Learn more</a>
+                    <a class="btn btn-primary rounded-pill px-3 btn-sm" style="color: white !important;"
+                      href="./it-register.html">Enroll in a course</a>
+                  </div>
+                  <div class="col-lg-6 text-center">
+                    <img src="./assets/images/business/business-img-6-min.jpg" alt="Slide 4" class="img-fluid rounded-4"
+                      style="max-height: 400px; object-fit: contain;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <ol class="carousel-indicators">
+            <li data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#heroCarousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#heroCarousel" data-bs-slide-to="2"></li>
+            <li data-bs-target="#heroCarousel" data-bs-slide-to="3"></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- End Hero-->
+
+
+
+      <!-- ======= About =======-->
+      <section class="py-5 about__v4 section" id="about">
+        <div class="container">
+          <div class="row align-items-center">
+
+            <!-- Text Content -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <h2 class="fw-bold mb-5" data-aos="fade-up" data-aos-delay="100">Why Choose Your Academy?</h2>
+              <p class="mb-3" style=" padding-right: 55px;" data-aos="fade-up" data-aos-delay="200">
+                At ARVYS, we operate with the belief that excellence is attainable through consistency.
+                Here, minds are built, skills are groomed, ideas are nurtured and collaboration thrives gracefully. <br>
+                At ARVYS, we operate with the belief that excellence is attainable through consistency.
+                Here, minds are built, skills are groomed, ideas are nurtured and collaboration thrives.
+              </p>
+              <a href="./about.html" class="btn btn-primary rounded-pill" data-aos="fade-up" data-aos-delay="300">
+                Learn More <img src="./assets/images/ri_arrow-up-line.png" />
+              </a>
+            </div>
+
+            <!-- Images -->
+            <div class="col-lg-6">
+              <div class="d-flex flex-column gap-3">
+                <img src="./assets/public/IMAGES/code.png" class="img-fluid rounded-4" alt="Image 1" data-aos="fade-up"
+                  data-aos-delay="100">
+                <img src="./assets/public/IMAGES/people.png" class="img-fluid rounded-4 ms-lg-5" alt="Image 2"
+                  data-aos="fade-up" data-aos-delay="300">
+                <img src="./assets/public/IMAGES/code2.png" class="img-fluid rounded-4" alt="Image 3" data-aos="fade-up"
+                  data-aos-delay="500">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- End About-->
+
+      <!-- ======= Courses =======-->
+      <section class="section courses__v2" id="course">
+        <div class="container">
+          <h2 class="fw-bold text-center">Our Courses</h2>
+          <p class="text-center mb-5">Our courses are perfectly curated to <br> build you from beginner level to
+            industry-standard</p>
+          <div class="row g-4 justify-content-center text-center">
+
+            <!-- Course 1 -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <a href="./course-details.html" class="text-decoration-none text-dark">
+                <img src="./assets/public/IMAGES/circle.svg" class="img-fluid rounded mb-3" alt="Course 1">
+                <h5 class="fw-semibold">Data Science/Analytics</h5>
+                <p class="mb-3 subtext">Learn the important skills needed for your academic career</p>
+              </a>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+              <a href="./course-details.html" class="text-decoration-none text-dark">
+                <img src="./assets/public/IMAGES/circle.svg" class="img-fluid rounded mb-3" alt="Course 2">
+                <h5 class="fw-semibold">Mobile App Development</h5>
+                <p class="mb-3 subtext">Learn the important skills needed for your academic career</p>
+              </a>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+              <a href="./course-details.html" class="text-decoration-none text-dark">
+                <img src="./assets/public/IMAGES/circle.svg" class="img-fluid rounded mb-3" alt="Course 3">
+                <h5 class="fw-semibold">Desktop App Development</h5>
+                <p class="mb-3 subtext">Learn the important skills needed for your academic career</p>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-12 text-center" data-aos="fade-up">
+              <a href="./courses.html" class="btn btn-primary rounded-pill px-5 py-2 fw-semibold btn-md">View All
+                Courses</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Courses-->
+
+      <!-- ======= Student Projects ======= -->
+      <section class="section py-5 bg-light" id="projects">
+        <div class="container">
+          <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="fw-bold">Student Projects</h2>
+            <p>See what our students are building</p>
+          </div>
+
+          <div class="row g-4 justify-content-center">
+
+            <!-- Project 1: E-Commerce -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-decoration-none">
+                <div class="student-project-card bg-white rounded-4 overflow-hidden shadow-sm h-100">
+                  <div class="project-img-wrapper position-relative" style="height: 220px;">
+                    <img src="./assets/images/ecommerce.webp" class="w-100 h-100 object-fit-cover" alt="E-Commerce App">
+                  </div>
+                  <div class="p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold mb-0" style="color: var(--bs-heading-color);">E-Commerce App</h5>
+                   
+                    </div>
+                    <p class="text-secondary mb-3" style="font-size: 0.95rem; line-height: 1.6;">A full-stack React
+                      application for managing inventory and sales with real-time updates.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                      <span class="badge"
+                        style="background: #EEF2FF; color: var(--bs-primary); font-weight: 500; padding: 6px 12px;">React</span>
+                      <span class="badge"
+                        style="background: #EEF2FF; color: var(--bs-primary); font-weight: 500; padding: 6px 12px;">Node.js</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 2: Health Tracker -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+              <a href="#" class="text-decoration-none">
+                <div class="student-project-card bg-white rounded-4 overflow-hidden shadow-sm h-100">
+                  <div class="project-img-wrapper position-relative" style="height: 220px;">
+                    <img src="./assets/images/health-tracker.webp" class="w-100 h-100 object-fit-cover"
+                      alt="Health Tracker">
+                  </div>
+                  <div class="p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold mb-0" style="color: var(--bs-heading-color);">Health Tracker</h5>
+                   
+                    </div>
+                    <p class="text-secondary mb-3" style="font-size: 0.95rem; line-height: 1.6;">Mobile application
+                      built with Flutter to track daily fitness goals and diet plans.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                      <span class="badge"
+                        style="background: #D1FAE5; color: #065F46; font-weight: 500; padding: 6px 12px;">Flutter</span>
+                      <span class="badge"
+                        style="background: #D1FAE5; color: #065F46; font-weight: 500; padding: 6px 12px;">Firebase</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Project 3: Finance Manager -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+              <a href="#" class="text-decoration-none">
+                <div class="student-project-card bg-white rounded-4 overflow-hidden shadow-sm h-100">
+                  <div class="project-img-wrapper position-relative" style="height: 220px;">
+                    <img src="./assets/images/finance-tracker.webp" class="w-100 h-100 object-fit-cover"
+                      alt="Finance Manager">
+                  </div>
+                  <div class="p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 class="fw-bold mb-0" style="color: var(--bs-heading-color);">Finance Manager</h5>
+                   
+                    </div>
+                    <p class="text-secondary mb-3" style="font-size: 0.95rem; line-height: 1.6;">Desktop application for
+                      personal finance management and investment tracking.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                      <span class="badge"
+                        style="background: #FEF3C7; color: #92400E; font-weight: 500; padding: 6px 12px;">Python</span>
+                      <span class="badge"
+                        style="background: #FEF3C7; color: #92400E; font-weight: 500; padding: 6px 12px;">SQL</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= Team ======= -->
+      <section class="section py-5 bg-light" id="team">
+        <div class="container">
+          <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="fw-bold">Meet Our Team</h2>
+            <p>Experts dedicated to your success</p>
+          </div>
+          <div class="row g-4 justify-content-center">
+
+            <!-- Card 1 -->
+            <div class="col-12 col-md-4">
+              <a href="./staffs-details.html" class="text-decoration-none">
+                <div class="video-card position-relative overflow-hidden rounded-4">
+                  <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e"
+                    class="w-100 h-100 object-fit-cover" alt="Eteng Eteng">
+                  <div class="video-info d-flex align-items-center gap-2">
+                    <img src="./assets/public/IMAGES/team/ayuk.png" class="avatar rounded-circle" alt="Eteng">
+                    <div>
+                      <h6 class="mb-0 fw-semibold">Eteng Eteng</h6>
+                      <small class="text-light opacity-75">Backend Developer</small>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-md-4">
+              <a href="./staffs-details.html" class="text-decoration-none">
+                <div class="video-card position-relative overflow-hidden rounded-4">
+                  <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1"
+                    class="w-100 h-100 object-fit-cover" alt="John Wilson">
+                  <div class="video-info d-flex align-items-center gap-2">
+                    <img src="./assets/public/IMAGES/team/ayuk.png" class="avatar rounded-circle" alt="John">
+                    <div>
+                      <h6 class="mb-0 fw-semibold">John Wilson</h6>
+                      <small class="text-light opacity-75">Data Analyst</small>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-md-4">
+              <a href="./staffs-details.html" class="text-decoration-none">
+                <div class="video-card position-relative overflow-hidden rounded-4">
+                  <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1"
+                    class="w-100 h-100 object-fit-cover" alt="Vivian Effong">
+                  <div class="video-info d-flex align-items-center gap-2">
+                    <img src="./assets/public/IMAGES/team/ayuk.png" class="avatar rounded-circle" alt="Vivian">
+                    <div>
+                      <h6 class="mb-0 fw-semibold">Vivian Effong</h6>
+                      <small class="text-light opacity-75">Data Analyst</small>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="400">
+              <a href="./staffs.html" class="btn btn-outline-primary rounded-pill px-4">See Our Team</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======= Testimonial =======-->
+      <section class="section testimonials__v2 py-5">
+        <div class="container-fluid mb-4 py-5" id="testimonial">
+          <div class="container">
+            <h3 class="fw-bold">What our students say</h3>
+            <p>
+              Students at ARVYS are properly grounded in taught skills,<br>
+              making them ready to work in the industry.
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-slider-wrapper overflow-hidden position-relative">
+          <div class="testimonial-slider d-flex">
+            <!-- Image 1 -->
+            <div class="testimonial-image-wrapper mx-2">
+              <img src="./assets/public/IMAGES/students/eteng.png" class="img-fluid rounded-4" alt="Testimonial 1">
+            </div>
+            <!-- Image 2 -->
+            <div class="testimonial-image-wrapper mx-2">
+              <img src="./assets/public/IMAGES/students/john.png" class="img-fluid rounded-4" alt="Testimonial 2">
+            </div>
+            <!-- Image 3 -->
+            <div class="testimonial-image-wrapper mx-2">
+              <img src="./assets/public/IMAGES/students/vivian.png" class="img-fluid rounded-4" alt="Testimonial 3">
+            </div>
+            <!-- Duplicate images for seamless loop -->
+            <div class="testimonial-image-wrapper mx-2">
+              <img src="./assets/public/IMAGES/students/john.png" class="img-fluid rounded-4" alt="Testimonial 1">
+            </div>
+            <div class="testimonial-image-wrapper mx-2">
+              <img src="./assets/public/IMAGES/students/eteng.png" class="img-fluid rounded-4" alt="Testimonial 1">
+            </div>
+            <div class="testimonial-image-wrapper mx-2">
+              <img src="./assets/public/IMAGES/students/vivian.png" class="img-fluid rounded-4" alt="Testimonial 3">
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Testimonials-->
+
+
+
+      <!-- ======= Blog Section ======= -->
+      <section class="section py-5" id="blog">
+        <div class="container">
+          <div class="row align-items-center g-4">
+
+            <!-- Big Image -->
+            <div class="col-lg-6 text-center" data-aos="fade-up" data-aos-delay="200">
+              <img src="./assets/public/IMAGES/blog/people.png" class="img-fluid rounded-4" style="max-width: 99%;"
+                alt="Main Blog Image">
+            </div>
+
+
+
+            <!-- Blog Content -->
+            <div class="col-lg-6">
+              <h2 class="fw-bold">Our Latest Blogs</h2>
+              <p class="mb-4">Stay up to date with thrilling tech stories on our blog.</p>
+
+              <div class="d-flex gap-3 flex-wrap mb-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- Blog Card 1 -->
+                <div class="blog-card position-relative">
+                  <img src="./assets/public/IMAGES/blog/blog-1.png" class="img-fluid rounded-4" alt="Blog 1">
+                  <!-- <div class="blog-overlay position-absolute bottom-0 start-0 end-0 p-2">
+                    <p class="text-white mb-0 small">Why Remote Jobs are getting obsolete...</p>
+                  </div> -->
+                </div>
+                <!-- Blog Card 2 -->
+                <div class="blog-card position-relative" data-aos="fade-up" data-aos-delay="200">
+                  <img src="./assets/public/IMAGES/blog/blog2.png" class="img-fluid rounded-4" alt="Blog 2">
+                  <!-- <div class="blog-overlay position-absolute bottom-0 start-0 end-0 p-2">
+                    <p class="text-white mb-0 small">Learning Alone - The Good, Bad and Ugly...</p>
+                  </div> -->
+                </div>
+                <!-- Blog Card 3 -->
+                <div class="blog-card position-relative" data-aos="fade-up" data-aos-delay="200">
+                  <img src="./assets/public/IMAGES/blog/blog3.png" class="img-fluid rounded-4" alt="Blog 3">
+                  <!-- <div class="blog-overlay position-absolute bottom-0 start-0 end-0 p-2">
+                    <p class="text-white mb-0 small">Why Industrial Training will take over...</p>
+                  </div> -->
+                </div>
+              </div>
+
+              <a href="#blog" class="btn btn-primary rounded-pill px-3" data-aos="fade-up" data-aos-delay="200">Read
+                More<img src="./assets/images/ri_arrow-up-line.png" /> </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ======= FAQ =======-->
+      <section class="section faq__v2 py-5" id="faq">
+        <div class="container">
+          <div class="row mb-4">
+            <div class="col-md-8 col-lg-7 mx-auto text-center">
+              <span class="subtitle text-uppercase mb-3">FAQ</span>
+              <h2 class="h2 fw-bold mb-3">Frequently Asked Questions</h2>
+              <p>Find answers to the most common questions about our courses, enrollment, and learning experience.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 mx-auto">
+              <div class="accordion custom-accordion" id="accordionFAQ">
+
+                <!-- Question 1 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq-collapseOne" aria-expanded="true" aria-controls="faq-collapseOne">
+                      What courses do you offer?
+                    </button>
+                  </h2>
+                  <div id="faq-collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                      We offer a variety of courses including Data Science, Web Development, Mobile App Development,
+                      Full Stack Engineering, and Industrial Training programs.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq-collapseTwo" aria-expanded="false" aria-controls="faq-collapseTwo">
+                      How do I enroll in a course?
+                    </button>
+                  </h2>
+                  <div id="faq-collapseTwo" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      You can enroll by clicking the "Enroll" button on any course page. Fill out the registration form,
+                      and you'll receive a confirmation email with next steps.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq-collapseThree" aria-expanded="false" aria-controls="faq-collapseThree">
+                      Are the courses beginner-friendly?
+                    </button>
+                  </h2>
+                  <div id="faq-collapseThree" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      Yes! Our courses are designed for all levels, including complete beginners. You’ll start from the
+                      fundamentals and gradually build advanced skills.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq-collapseFour" aria-expanded="false" aria-controls="faq-collapseFour">
+                      Will I get a certificate after completing a course?
+                    </button>
+                  </h2>
+                  <div id="faq-collapseFour" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      Absolutely. Upon successful completion, you’ll receive a certificate that you can share with
+                      employers or add to your portfolio.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#faq-collapseFive" aria-expanded="false" aria-controls="faq-collapseFive">
+                      Do you offer support during the learning process?
+                    </button>
+                  </h2>
+                  <div id="faq-collapseFive" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      Yes, you will have access to mentorship, community support, and regular check-ins to help you stay
+                      on track and get your questions answered.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End FAQ-->
+
+      <!-- ======= Upcoming Cohort ======= -->
+      <section class="section py-5" style="background: linear-gradient(135deg, var(--bs-primary) 0%, #4444b5 100%);">
+        <div class="container">
+          <div class="row align-items-center g-4" data-aos="fade-up">
+            <!-- Left Content -->
+            <div class="col-lg-7">
+              <span class="badge mb-3"
+                style="background: rgba(255, 255, 255, 0.2); color: white; padding: 8px 16px; border-radius: 50px;"><i
+                  class="bi bi-calendar-event me-2"></i>Upcoming Cohort</span>
+              <h2 class="fw-bold text-white mb-3">Ready to Start Your Tech Journey?</h2>
+              <p class="text-white mb-4" style="opacity: 0.95; font-size: 1.1rem; line-height: 1.6;">
+                Join our next cohort and learn from industry experts. Build real-world projects, gain practical skills,
+                and launch your tech career.
+              </p>
+              <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+                <div class="d-flex align-items-center gap-2 text-white">
+                  <i class="bi bi-check-circle-fill fs-5"></i>
+                  <span>Hands-on Projects</span>
+                </div>
+                <div class="d-flex align-items-center gap-2 text-white">
+                  <i class="bi bi-check-circle-fill fs-5"></i>
+                  <span>Expert Mentorship</span>
+                </div>
+                <div class="d-flex align-items-center gap-2 text-white">
+                  <i class="bi bi-check-circle-fill fs-5"></i>
+                  <span>Certification</span>
+                </div>
+              </div>
+              <a href="./it-register.html" class="btn btn-light btn-lg rounded-pill px-4 fw-semibold">
+                Reserve Your Spot <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+
+            <!-- Right Card -->
+            <div class="col-lg-5">
+              <div class="bg-white rounded-4 p-4 shadow" style="border: 1px solid rgba(255, 255, 255, 0.1);">
+                <div class="text-center mb-3">
+                  <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                    style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--bs-primary) 0%, #4444b5 100%);">
+                    <i class="bi bi-calendar-check text-white" style="font-size: 2rem;"></i>
+                  </div>
+                  <h4 class="fw-bold mb-2" style="color: var(--bs-heading-color);">Next Bootcamp Starts</h4>
+                  <p class="text-primary fw-bold fs-3 mb-0">March 2026</p>
+                </div>
+                <hr style="opacity: 0.1;">
+                <div class="row g-3 mt-2">
+                  <div class="col-6 text-center">
+                    <div class="p-3 rounded-3" style="background: #F7F7F8;">
+                      <p class="fw-bold text-primary mb-1 fs-4">12</p>
+                      <p class="text-secondary small mb-0">Weeks</p>
+                    </div>
+                  </div>
+                  <div class="col-6 text-center">
+                    <div class="p-3 rounded-3" style="background: #F7F7F8;">
+                      <p class="fw-bold text-primary mb-1 fs-4">30+</p>
+                      <p class="text-secondary small mb-0">Projects</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= Contact =======-->
+      <section class="section contact__v2 py-5 bg-light" id="contact">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-8 col-lg-7 mx-auto text-center">
+              <span class="subtitle text-uppercase mb-3">Contact</span>
+              <h2 class="h2 fw-bold mb-3">Contact Us</h2>
+              <p>We'd love to hear from you! Reach out to us for inquiries, partnerships, or any questions you may have.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <!-- Contact Info -->
+            <div class="col-md-6">
+              <div class="d-flex gap-4 flex-column">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="icon d-block"><i class="bi bi-telephone"></i></div>
+                  <span>
+                    <span class="d-block">Phone</span>
+                    <strong>+234 701 234 5678</strong>
+                  </span>
+                </div>
+                <div class="d-flex align-items-start gap-3">
+                  <div class="icon d-block"><i class="bi bi-send"></i></div>
+                  <span>
+                    <span class="d-block">Email</span>
+                    <strong>info@arvysacademy.ng</strong>
+                  </span>
+                </div>
+                <div class="d-flex align-items-start gap-3">
+                  <div class="icon d-block"><i class="bi bi-geo-alt"></i></div>
+                  <span>
+                    <span class="d-block">Address</span>
+                    <address class="fw-bold">
+                      No. 24 Mayne Avenue,<br>
+                      Calabar, Cross River State,<br>
+                      Nigeria
+                    </address>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-md-6">
+              <div class="form-wrapper">
+                <form id="contactForm">
+                  <div class="row gap-3 mb-3">
+                    <div class="col-md-12">
+                      <label class="mb-2" for="name">Name</label>
+                      <input class="form-control" id="name" type="text" name="name" required>
+                    </div>
+                    <div class="col-md-12">
+                      <label class="mb-2" for="email">Email</label>
+                      <input class="form-control" id="email" type="email" name="email" required>
+                    </div>
+                  </div>
+                  <div class="row gap-3 mb-3">
+                    <div class="col-md-12">
+                      <label class="mb-2" for="subject">Subject</label>
+                      <input class="form-control" id="subject" type="text" name="subject">
+                    </div>
+                  </div>
+                  <div class="row gap-3 mb-3">
+                    <div class="col-md-12">
+                      <label class="mb-2" for="message">Message</label>
+                      <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary fw-semibold" type="submit">Send Message</button>
+                </form>
+                <div class="mt-3 d-none alert alert-success" id="successMessage">Message sent successfully!</div>
+                <div class="mt-3 d-none alert alert-danger" id="errorMessage">Message sending failed. Please try again
+                  later.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Contact-->
+
+
+      <footer class="py-5 custom-footer" id="footer">
+        <div class="container">
+          <div class="row g-4 align-items-start">
+
+            <!-- Branding -->
+            <div class="col-lg-4">
+              <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="img-fluid mb-3"
+                style="max-width: 120px;">
+              <h2 class="mb-0 text-white">
+                The No. 1 Tech Academy for tertiary students.
+              </h2>
+              <p class="text-white small" style="width: 85%;">
+                At ARVYS, we operate with the belief that excellence is attainable through consistency.
+              </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-6 col-lg-2">
+              <h6 class="fw-semibold mb-3 text-white">Quick Links</h6>
+              <ul class="list-unstyled">
+                <li><a href="./index.html" class="text-decoration-none text-white">Home</a></li>
+                <li><a href="./courses.html" class="text-decoration-none text-white">Courses</a></li>
+                <li><a href="./staffs.html" class="text-decoration-none text-white">Team</a></li>
+                <li><a href="./Industrial-training.html" class="text-decoration-none text-white">Industrial Training</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Company Links -->
+            <div class="col-6 col-lg-2">
+              <h6 class="fw-semibold mb-3 text-white">Company</h6>
+              <ul class="list-unstyled">
+                <li><a href="./about.html" class="text-decoration-none text-white">About Us</a></li>
+                <li><a href="./index.html#contact" class="text-decoration-none text-white">Contact Us</a></li>
+                <li><a href="./it-register.html" class="text-decoration-none text-white">Register</a></li>
+              </ul>
+            </div>
+
+            <!-- Newsletter (takes more space) -->
+            <div class="col-lg-4">
+              <h6 class="fw-semibold mb-3 text-white">Join Our Newsletter</h6>
+              <form class="input-group">
+                <input type="email" class="form-control bg-white rounded-start-pill" placeholder="Enter your email"
+                  required>
+                <button type="submit" class="btn rounded-end-pill" style="background-color: #6C65EF;">
+                  Subscribe
+                </button>
+              </form>
+
+              <div class="mt-3">
+                <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="my-4 border-muted">
+
+          <div class="text-center small text-white">
+            &copy;
+            <script>document.write(new Date().getFullYear())</script> ARVYS. All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ======= Back to Top =======-->
+  <button id="back-to-top"><i class="bi bi-arrow-up-short"></i></button>
+  <!-- End Back to top-->
+
+  <!-- ======= Javascripts =======-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</body>
+<script src="assets/vendors/aos/aos.js"></script>
+<script src="assets/js/custom.js"></script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector("#heroCarousel");
+    const items = carousel.querySelectorAll(".carousel-item");
+    const indicators = carousel.querySelectorAll(".carousel-indicators li");
+
+    const randomIndex = Math.floor(Math.random() * items.length);
+
+    // Remove any active classes
+    items.forEach(item => item.classList.remove("active"));
+    indicators.forEach(indicator => indicator.classList.remove("active"));
+
+    // Set random active slide
+    items[randomIndex].classList.add("active");
+    indicators[randomIndex].classList.add("active");
+  });
+</script>
+<script src="./"></script>
+
+<!-- Page Loader Script -->
+<script>
+  // Hide page loader when page is fully loaded
+  window.addEventListener('load', function () {
+    const loader = document.getElementById('pageLoader');
+    if (loader) {
+      setTimeout(() => {
+        loader.classList.add('fade-out');
+      }, 300);
+    }
+  });
+</script>
+<!-- End JavaScripts-->
+</body>
+
+</html>

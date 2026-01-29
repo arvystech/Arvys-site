@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Industrial Training Registration - ARVYS Tech Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        /* Modern Registration Page Styles */
+
+        .register-hero {
+            background: linear-gradient(135deg, #0016C2 0%, #4444b5 100%);
+            padding: 140px 0 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .register-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .register-hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9) !important;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* School Selection Styles */
+        .school-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 1.5rem;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .school-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 22, 194, 0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .school-card:hover::before {
+            left: 100%;
+        }
+
+        .school-card:hover {
+            border-color: #c1c7f0;
+            box-shadow: 0 2px 5px rgba(0, 22, 194, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .school-card.selected {
+            border-color: #0016C2;
+            background: linear-gradient(135deg, rgba(0, 22, 194, 0.05), rgba(68, 68, 181, 0.05));
+            box-shadow: 0 12px 40px rgba(0, 22, 194, 0.2);
+        }
+
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .school-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #16181B;
+            margin: 0;
+        }
+
+        /* Matric Number Search Bar */
+        .matric-search-container {
+            background: linear-gradient(135deg, rgba(219, 222, 240, 0.08), rgba(68, 68, 181, 0.08));
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            border: 2px solid #c1c7f0;
+            box-shadow: 0 1px 1px rgba(0, 22, 194, 0.15);
+        }
+
+        .matric-search-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0016C2;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .matric-search-label i {
+            font-size: 1.5rem;
+        }
+
+        .matric-search-input {
+            position: relative;
+        }
+
+        .matric-search-input input {
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: 1px solid #dde1ff;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: white;
+            box-shadow: 0 1px 2px rgba(0, 22, 194, 0.1);
+        }
+
+        .matric-search-input input:focus {
+            border-color: #c1c7f0;
+            box-shadow: 0 0 0 4px rgba(0, 22, 194, 0.15);
+        }
+
+        .matric-search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #0016C2, #4444b5);
+            color: white;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 22, 194, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .matric-search-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 22, 194, 0.4);
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-circle {
+            background: linear-gradient(135deg, #0016C2, #4444b5);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .step.completed .step-circle {
+            background: #28a745;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: #0016C2;
+            font-weight: 600;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #16181B;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #646679;
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #16181B;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control,
+        .form-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #c1c7f0;
+            box-shadow: 0 0 0 3px rgba(0, 22, 194, 0.1);
+        }
+
+        .form-control:disabled,
+        .form-select:disabled {
+            background-color: #f8f9fa;
+            border-color: #e0e0e0;
+            color: #646679;
+        }
+
+        .btn-primary {
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .btn-outline-secondary {
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: 2px solid #e0e0e0;
+            color: #646679;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #f5f5f5;
+            border-color: #d0d0d0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(0, 22, 194, 0.05), rgba(68, 68, 181, 0.05));
+            padding: 1.5rem;
+            border-radius: 16px;
+            border-left: 4px solid #0016C2;
+            margin-bottom: 2rem;
+        }
+
+        .info-box i {
+            color: #0016C2;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #646679 !important;
+        }
+
+        .course-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .course-card:hover {
+            border-color: #c1c7f0;
+            box-shadow: 0 8px 25px rgba(0, 22, 194, 0.1);
+        }
+
+        .course-card.selected {
+            border-color: #0016C2;
+            background: linear-gradient(135deg, rgba(0, 22, 194, 0.05), rgba(68, 68, 181, 0.05));
+        }
+
+        .course-card input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: #646679;
+            font-weight: 500;
+        }
+
+        .summary-value {
+            color: #16181B;
+            font-weight: 600;
+        }
+
+        .school-selection-section {
+            display: block;
+        }
+
+        .school-selection-section.hidden {
+            display: none;
+        }
+
+        .registration-form-section {
+            display: none;
+        }
+
+        .registration-form-section.active {
+            display: block;
+        }
+
+        @media (max-width: 767px) {
+            .register-hero h1 {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .step-label {
+                font-size: 0.75rem;
+            }
+
+            .school-logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .matric-search-input input {
+                font-size: 1rem;
+                padding: 0.875rem 1.25rem;
+            }
+
+            .matric-search-btn {
+                position: static;
+                transform: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="site-wrap">
+
+        <!-- ======= Header ======= -->
+        <header class="fbs__net-navbar navbar navbar-expand-lg dark position-fixed" aria-label="Navbar">
+            <div class="container d-flex align-items-center justify-content-between" style="height: 60px;">
+                <!-- Logo -->
+                <a class="navbar-brand w-auto" href="index.html">
+                    <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                    <img class="logo light img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
+                </a>
+
+                <!-- Offcanvas Nav -->
+                <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1"
+                    aria-labelledby="fbs__net-navbarsLabel">
+                    <div class="offcanvas-header">
+                        <a class="logo-link" id="fbs__net-navbarsLabel" href="index.html">
+                            <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg"
+                                alt="Logo">
+                            <img class="logo light img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                        </a>
+                        <button class="btn-close btn-close-black" type="button" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+
+                    <div class="offcanvas-body align-items-lg-center">
+                        <ul class="navbar-nav nav me-auto ps-lg-5 mb-2 mb-lg-0 mx-auto text-center fw-bold">
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link" href="./courses.html">Courses</a></li>
+                            <li class="nav-item"><a class="nav-link scroll-link active"
+                                    href="./Industrial-training.html">Industrial Training</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex align-items-center gap-2 sign-btns">
+                    <a class="p-0 text-black" href="./login.html" style="text-decoration: none;">Log In</a>
+
+                    <button class="fbs__net-navbar-toggler ms-2" data-bs-toggle="offcanvas"
+                        data-bs-target="#fbs__net-navbars" aria-controls="fbs__net-navbars"
+                        aria-label="Toggle navigation">
+                        <svg class="fbs__net-icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="21" y1="6" x2="3" y2="6"></line>
+                            <line x1="15" y1="12" x2="3" y2="12"></line>
+                            <line x1="17" y1="18" x2="3" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- End Header -->
+
+        <!-- Hero Section -->
+        <section class="register-hero">
+            <div class="container">
+                <div class="text-center">
+                    <h1>Industrial Training Registration</h1>
+                    <p>Start your journey with hands-on experience in the tech industry</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="pb-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="form-container">
+
+                            <!-- School Selection Section -->
+                            <div class="school-selection-section" id="schoolSelection">
+                                <h2 class="section-title text-center mb-2">Select Your School</h2>
+                                <p class="section-subtitle text-center">Choose the institution you're affiliated with
+                                </p>
+
+                                <div class="row g-4 mt-3">
+                                    <!-- School 1 -->
+                                    <div class="col-md-6">
+                                        <div class="school-card" onclick="selectSchool('unical')">
+                                            <div class="text-center">
+                                                <img src="assets/images/uni-logo/unical-removebg-preview.png"
+                                                    alt="University of Calabar" class="school-logo">
+                                                <h3 class="school-name">University of Calabar</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- School 2 -->
+                                    <div class="col-md-6">
+                                        <div class="school-card" onclick="selectSchool('crutech')">
+                                            <div class="text-center">
+                                                <img src="assets/images/uni-logo/unicross-removebg-preview.png"
+                                                    alt="CRUTECH" class="school-logo">
+                                                <h3 class="school-name">University of Cross River State</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- School 3 -->
+                                    <div class="col-md-6">
+                                        <div class="school-card" onclick="selectSchool('unilag')">
+                                            <div class="text-center">
+                                                <img src="assets/images/uni-logo/unilag-removebg-preview.png"
+                                                    alt="University of Lagos" class="school-logo">
+                                                <h3 class="school-name">University of Lagos</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- School 4 -->
+                                    <div class="col-md-6">
+                                        <div class="school-card" onclick="selectSchool('uniport')">
+                                            <div class="text-center">
+                                                <img src="assets/images/uni-logo/uniport-logo-removebg-preview.png"
+                                                    alt="University of Port Harcourt" class="school-logo">
+                                                <h3 class="school-name">University of Port Harcourt</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Main Registration Form (Hidden Initially) -->
+                            <div class="registration-form-section" id="registrationFormSection">
+
+                                <!-- Step Indicator -->
+                                <div class="step-indicator">
+                                    <div class="step active" id="step-1">
+                                        <div class="step-circle">1</div>
+                                        <div class="step-label">Academic Info</div>
+                                    </div>
+                                    <div class="step" id="step-2">
+                                        <div class="step-circle">2</div>
+                                        <div class="step-label">Course Selection</div>
+                                    </div>
+                                    <div class="step" id="step-3">
+                                        <div class="step-circle">3</div>
+                                        <div class="step-label">Personal Info</div>
+                                    </div>
+                                    <div class="step" id="step-4">
+                                        <div class="step-circle">4</div>
+                                        <div class="step-label">Review & Submit</div>
+                                    </div>
+                                </div>
+
+                                <!-- Registration Form -->
+                                <form id="registrationForm">
+
+                                    <!-- Step 1: Academic Information -->
+                                    <div class="form-section active" id="section-1">
+                                        <h2 class="section-title">Academic Information</h2>
+                                        <p class="section-subtitle">Tell us about your educational background</p>
+
+                                        <!-- Highly Visible Matric Number Search -->
+                                        <div class="matric-search-container">
+                                            <div class="matric-search-label">
+                                                <i class="bi bi-search"></i>
+                                                <span>Search by Matriculation Number</span>
+                                            </div>
+                                            <div class="matric-search-input">
+                                                <input type="text" class="form-control" id="matricNumberSearch"
+                                                    placeholder="Enter your matric number (e.g., CS/2021/1234)">
+                                                <button type="button" class="matric-search-btn"
+                                                    onclick="searchMatricNumber()">
+                                                    <i class="bi bi-search me-1"></i> Search
+                                                </button>
+                                            </div>
+                                            <small class="text-muted mt-2 d-block">
+                                                <i class="bi bi-info-circle me-1"></i>
+                                                Enter your matric number to auto-fill academic details
+                                            </small>
+                                        </div>
+
+                                        <div class="row g-4">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Institution <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="institution"
+                                                    placeholder="e.g., University of Calabar" required disabled>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Matriculation Number <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="matricNumber"
+                                                    placeholder="e.g., CS/2021/1234" required disabled>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Department/Faculty <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="department"
+                                                    placeholder="e.g., Computer Science" required disabled>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Current Level <span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-select" id="currentLevel" required disabled>
+                                                    <option value="" selected>Select level</option>
+                                                    <option>100 Level</option>
+                                                    <option>200 Level</option>
+                                                    <option>300 Level</option>
+                                                    <option>400 Level</option>
+                                                    <option>500 Level</option>
+                                                    <option>Graduate</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end mt-4">
+                                            <button type="button" class="btn btn-primary" onclick="nextStep(1)">
+                                                Next: Course Selection <i class="bi bi-arrow-right ms-2"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 2: Course Selection -->
+                                    <div class="form-section" id="section-2">
+                                        <h2 class="section-title">Select Your IT Course</h2>
+                                        <p class="section-subtitle">Choose the industrial training program that aligns
+                                            with your goals</p>
+
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <div class="course-card">
+                                                    <div class="d-flex align-items-start gap-3">
+                                                        <input type="radio" name="course" value="fullstack"
+                                                            class="mt-1">
+                                                        <div class="flex-grow-1">
+                                                            <h5 class="mb-2 fw-bold">Full Stack Development</h5>
+                                                            <p class="mb-2" style="color: #646679;">3 months • Hands-on
+                                                                Experience • Beginner to Advanced</p>
+                                                            <p class="mb-0" style="color: #646679; font-size: 0.9rem;">
+                                                                Learn both frontend and backend development with React,
+                                                                Node.js, and MongoDB in a real-world setting.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="course-card">
+                                                    <div class="d-flex align-items-start gap-3">
+                                                        <input type="radio" name="course" value="data-science"
+                                                            class="mt-1">
+                                                        <div class="flex-grow-1">
+                                                            <h5 class="mb-2 fw-bold">Data Science & Analytics</h5>
+                                                            <p class="mb-2" style="color: #646679;">3 months • Industry
+                                                                Projects • Beginner Friendly</p>
+                                                            <p class="mb-0" style="color: #646679; font-size: 0.9rem;">
+                                                                Gain practical experience in data analysis,
+                                                                visualization, and machine learning with Python.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="course-card">
+                                                    <div class="d-flex align-items-start gap-3">
+                                                        <input type="radio" name="course" value="mobile-dev"
+                                                            class="mt-1">
+                                                        <div class="flex-grow-1">
+                                                            <h5 class="mb-2 fw-bold">Mobile App Development</h5>
+                                                            <p class="mb-2" style="color: #646679;">3 months • Real
+                                                                Projects • Intermediate</p>
+                                                            <p class="mb-0" style="color: #646679; font-size: 0.9rem;">
+                                                                Build cross-platform mobile apps with React Native and
+                                                                Flutter in a professional environment.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="course-card">
+                                                    <div class="d-flex align-items-start gap-3">
+                                                        <input type="radio" name="course" value="ui-ux" class="mt-1">
+                                                        <div class="flex-grow-1">
+                                                            <h5 class="mb-2 fw-bold">UI/UX Design</h5>
+                                                            <p class="mb-2" style="color: #646679;">3 months • Portfolio
+                                                                Building • Beginner Friendly</p>
+                                                            <p class="mb-0" style="color: #646679; font-size: 0.9rem;">
+                                                                Create beautiful interfaces and learn user experience
+                                                                design with Figma and industry best practices.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between mt-4">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                onclick="prevStep(2)">
+                                                <i class="bi bi-arrow-left me-2"></i> Previous
+                                            </button>
+                                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                                Next: Personal Info <i class="bi bi-arrow-right ms-2"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 3: Personal Information -->
+                                    <div class="form-section" id="section-3">
+                                        <h2 class="section-title">Personal Information</h2>
+                                        <p class="section-subtitle">Let's get your basic details</p>
+
+                                        <div class="info-box">
+                                            <div class="d-flex align-items-start">
+                                                <i class="bi bi-info-circle"></i>
+                                                <p>Provide accurate information as this will be used for your
+                                                    certificate
+                                                    and official records.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-4">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Full Name <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" placeholder="e.g., John Doe"
+                                                    required>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Email Address <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="email" class="form-control"
+                                                    placeholder="youremail@example.com" required>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Phone Number <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="tel" class="form-control" placeholder="+234 800 000 0000"
+                                                    required>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Date of Birth <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="date" class="form-control" required>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Gender <span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-select" required>
+                                                    <option value="" disabled selected>Select your gender</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                    <option>Prefer not to say</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">State of Residence <span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-select" required>
+                                                    <option value="" disabled selected>Select state</option>
+                                                    <option>Cross River</option>
+                                                    <option>Lagos</option>
+                                                    <option>Abuja</option>
+                                                    <option>Rivers</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label class="form-label">How did you hear about us? <span
+                                                        class="text-danger">*</span></label>
+                                                <select class="form-select" required>
+                                                    <option value="" disabled selected>Select option</option>
+                                                    <option>Social Media (Instagram, Twitter, Facebook)</option>
+                                                    <option>Friend/Classmate Referral</option>
+                                                    <option>Campus Ambassador</option>
+                                                    <option>Google Search</option>
+                                                    <option>University Notice Board</option>
+                                                    <option>Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between mt-4">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                onclick="prevStep(3)">
+                                                <i class="bi bi-arrow-left me-2"></i> Previous
+                                            </button>
+                                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                                                Review & Submit <i class="bi bi-arrow-right ms-2"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 4: Review & Submit -->
+                                    <div class="form-section" id="section-4">
+                                        <h2 class="section-title">Review Your Information</h2>
+                                        <p class="section-subtitle">Please verify all details before submitting</p>
+
+                                        <div class="info-box">
+                                            <div class="d-flex align-items-start">
+                                                <i class="bi bi-shield-check"></i>
+                                                <div>
+                                                    <p class="mb-2 fw-bold">Your data is secure</p>
+                                                    <p>All information is encrypted and will only be used for
+                                                        registration purposes.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-light p-4 rounded-3 mb-4">
+                                            <h5 class="mb-3 fw-bold">Summary</h5>
+                                            <div class="summary-item">
+                                                <span class="summary-label">Selected School</span>
+                                                <span class="summary-value" id="summarySchool">-</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="summary-label">Selected Course</span>
+                                                <span class="summary-value">Full Stack Development</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="summary-label">Duration</span>
+                                                <span class="summary-value">3 Months</span>
+                                            </div>
+                                            <div class="summary-item">
+                                                <span class="summary-label">Start Date</span>
+                                                <span class="summary-value">Next Cohort - January 2025</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check mb-4">
+                                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                            <label class="form-check-label" for="termsCheck">
+                                                I agree to the <a href="#" class="text-primary">Terms & Conditions</a>
+                                                and
+                                                <a href="#" class="text-primary">Privacy Policy</a>
+                                            </label>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                onclick="prevStep(4)">
+                                                <i class="bi bi-arrow-left me-2"></i> Previous
+                                            </button>
+                                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                                Complete Registration <i class="bi bi-check-circle ms-2"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-5 custom-footer" id="footer">
+            <div class="container">
+                <div class="row g-4 align-items-start">
+
+                    <!-- Branding -->
+                    <div class="col-lg-4">
+                        <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="img-fluid mb-3"
+                            style="max-width: 120px;">
+                        <h2 class="mb-0 text-white">
+                            The No. 1 Tech Academy for tertiary students.
+                        </h2>
+                        <p class="text-white small" style="width: 85%;">
+                            At ARVYS, we operate with the belief that excellence is attainable through consistency.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Quick Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./index.html" class="text-decoration-none text-white">Home</a></li>
+                            <li><a href="./courses.html" class="text-decoration-none text-white">Courses</a></li>
+                            <li><a href="./staffs.html" class="text-decoration-none text-white">Team</a></li>
+                            <li><a href="#" class="text-decoration-none text-white">Blog</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Links -->
+                    <div class="col-6 col-lg-2">
+                        <h6 class="fw-semibold mb-3 text-white">Company</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="./about.html" class="text-decoration-none text-white">About Us</a></li>
+                            <li><a href="./index.html#contact" class="text-decoration-none text-white">Contact Us</a>
+                            </li>
+                            <li><a href="#" class="text-decoration-none text-white">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="col-lg-4">
+                        <h6 class="fw-semibold mb-3 text-white">Join Our Newsletter</h6>
+                        <form class="input-group">
+                            <input type="email" class="form-control bg-white rounded-start-pill"
+                                placeholder="Enter your email" required>
+                            <button type="submit" class="btn rounded-end-pill" style="background-color: #6C65EF;">
+                                Subscribe
+                            </button>
+                        </form>
+
+                        <div class="mt-3">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                            <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4 border-muted">
+
+                <div class="text-center small text-white">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script> ARVYS. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // School data mapping
+        const schoolData = {
+            'unical': 'University of Calabar',
+            'crutech': 'Cross River University of Technology',
+            'unilag': 'University of Lagos',
+            'uniport': 'University of Port Harcourt'
+        };
+
+        let selectedSchool = '';
+
+        // School selection
+        function selectSchool(schoolId) {
+            selectedSchool = schoolData[schoolId];
+            document.getElementById('summarySchool').textContent = selectedSchool;
+            document.getElementById('institution').value = selectedSchool;
+
+            // Hide school selection and show registration form
+            document.getElementById('schoolSelection').classList.add('hidden');
+            document.getElementById('registrationFormSection').classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mock student database for matric number lookup
+        const studentDatabase = {
+            'CS/2021/1234': {
+                institution: 'University of Calabar',
+                department: 'Computer Science',
+                level: '300 Level'
+            },
+            'ENG/2020/5678': {
+                institution: 'Cross River University of Technology',
+                department: 'Electrical Engineering',
+                level: '400 Level'
+            },
+            'MED/2022/9012': {
+                institution: 'University of Lagos',
+                department: 'Medicine',
+                level: '200 Level'
+            }
+        };
+
+        // Matric number search functionality
+        function searchMatricNumber() {
+            const matricNumber = document.getElementById('matricNumberSearch').value.trim();
+
+            if (!matricNumber) {
+                alert('Please enter a matriculation number');
+                return;
+            }
+
+            // Check if matric number exists in database
+            const studentData = studentDatabase[matricNumber];
+
+            if (studentData) {
+                // Auto-populate fields
+                document.getElementById('institution').value = studentData.institution;
+                document.getElementById('matricNumber').value = matricNumber;
+                document.getElementById('department').value = studentData.department;
+                document.getElementById('currentLevel').value = studentData.level;
+
+                // Enable fields (they can edit if needed)
+                document.getElementById('institution').disabled = false;
+                document.getElementById('matricNumber').disabled = false;
+                document.getElementById('department').disabled = false;
+                document.getElementById('currentLevel').disabled = false;
+
+                // Show success message
+                alert('Student record found! Academic details have been auto-filled.');
+            } else {
+                // Show not found message and enable manual entry
+                if (confirm('Matriculation number not found in our database. Would you like to enter details manually?')) {
+                    document.getElementById('matricNumber').value = matricNumber;
+                    document.getElementById('institution').disabled = false;
+                    document.getElementById('matricNumber').disabled = false;
+                    document.getElementById('department').disabled = false;
+                    document.getElementById('currentLevel').disabled = false;
+                }
+            }
+        }
+
+        // Multi-step form navigation
+        let currentStep = 1;
+
+        function nextStep(step) {
+            // Hide current section
+            document.getElementById(`section-${step}`).classList.remove('active');
+            document.getElementById(`step-${step}`).classList.remove('active');
+            document.getElementById(`step-${step}`).classList.add('completed');
+
+            // Show next section
+            currentStep = step + 1;
+            document.getElementById(`section-${currentStep}`).classList.add('active');
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            // Hide current section
+            document.getElementById(`section-${step}`).classList.remove('active');
+            document.getElementById(`step-${step}`).classList.remove('active');
+
+            // Show previous section
+            currentStep = step - 1;
+            document.getElementById(`section-${currentStep}`).classList.add('active');
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById(`step-${currentStep}`).classList.remove('completed');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add selected class to course cards
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.course-card').forEach(card => {
+                card.addEventListener('click', function () {
+                    document.querySelectorAll('.course-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    this.querySelector('input[type="radio"]').checked = true;
+                });
+            });
+        });
+
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('IT Registration submitted successfully! You will receive a confirmation email shortly with further instructions for your industrial training placement.');
+            // Here you would normally send the form data to your server
+        });
+    </script>
+</body>
+
+</html>
