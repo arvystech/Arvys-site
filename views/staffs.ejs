@@ -369,305 +369,79 @@
       <section class="py-5 bg-light">
         <div class="container">
           <div class="row g-4">
-            <!-- Staff Member 1 -->
-            <div class="col-lg-4 col-md-6">
-              <a href="/staffs-details" class="text-decoration-none">
-                <div class="staff-card">
-                  <div class="staff-image-wrapper">
-                    <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500"
-                      alt="Eteng Eteng"
-                    />
-                    <div class="staff-role-badge">Lead Instructor</div>
-                  </div>
-                  <div class="staff-content">
-                    <h3 class="staff-name">Eteng Eteng</h3>
-                    <p class="staff-title">Full Stack Developer</p>
-                    <p class="staff-bio">
-                      8+ years of experience in web development and teaching.
-                      Specialized in React, Node.js, and cloud technologies.
-                    </p>
+            <% if (staffs && staffs.length > 0) { %>
+              <% staffs.forEach(staff => { 
+                const fullName = `${staff.first_name} ${staff.last_name}`;
+                const socialIconMap = {
+                  'linkedin': 'bi-linkedin',
+                  'twitter': 'bi-twitter',
+                  'github': 'bi-github',
+                  'behance': 'bi-behance',
+                  'dribbble': 'bi-dribbble',
+                  'instagram': 'bi-instagram',
+                  'facebook': 'bi-facebook',
+                  'medium': 'bi-medium',
+                  'codepen': 'bi-codepen',
+                  'stackoverflow': 'bi-stack-overflow'
+                };
+              %>
+                <div class="col-lg-4 col-md-6">
+                  <a href="/staffs/<%= staff.slug %>" class="text-decoration-none">
+                    <div class="staff-card">
+                      <div class="staff-image-wrapper">
+                        <img
+                          src="<%= staff.profile_image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500' %>"
+                          alt="<%= fullName %>"
+                        />
+                        <% if (staff.badge) { %>
+                          <div class="staff-role-badge"><%= staff.badge %></div>
+                        <% } %>
+                      </div>
+                      <div class="staff-content">
+                        <h3 class="staff-name"><%= fullName %></h3>
+                        <p class="staff-title"><%= staff.title %></p>
 
-                    <div class="staff-stats">
-                      <div class="stat-item">
-                        <div class="stat-value">1,200+</div>
-                        <div class="stat-label">Students</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">4.9</div>
-                        <div class="stat-label">Rating</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">12+</div>
-                        <div class="stat-label">Courses</div>
+                        <div class="staff-stats">
+                          <div class="stat-item">
+                            <div class="stat-value"><%= staff.students_count %>+</div>
+                            <div class="stat-label">Students</div>
+                          </div>
+                          <div class="stat-item">
+                            <div class="stat-value"><%= staff.average_rating %></div>
+                            <div class="stat-label">Rating</div>
+                          </div>
+                          <div class="stat-item">
+                            <div class="stat-value"><%= staff.courses_count %><% if (staff.years_experience) { %>+<% } %></div>
+                            <div class="stat-label"><% if (staff.years_experience) { %>Years<% } else { %>Courses<% } %></div>
+                          </div>
+                        </div>
+
+                        <div class="staff-social">
+                          <% if (staff.social_links && staff.social_links.length > 0) { %>
+                            <% staff.social_links.forEach(link => { 
+                              const iconClass = socialIconMap[link.platform.toLowerCase()] || 'bi-link-45deg';
+                            %>
+                              <a href="<%= link.profile_url %>" class="social-link" target="_blank" rel="noopener">
+                                <i class="bi <%= iconClass %>"></i>
+                              </a>
+                            <% }); %>
+                          <% } %>
+                        </div>
                       </div>
                     </div>
-
-                    <div class="staff-social">
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-linkedin"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-twitter"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-github"></i
-                      ></a>
-                    </div>
-                  </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-
-            <!-- Staff Member 2 -->
-            <div class="col-lg-4 col-md-6">
-              <a href="/staffs-details" class="text-decoration-none">
-                <div class="staff-card">
-                  <div class="staff-image-wrapper">
-                    <img
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500"
-                      alt="Grace Okon"
-                    />
-                    <div class="staff-role-badge">UI/UX Designer</div>
-                  </div>
-                  <div class="staff-content">
-                    <h3 class="staff-name">Grace Okon</h3>
-                    <p class="staff-title">Senior UI/UX Designer</p>
-                    <p class="staff-bio">
-                      Creative designer with 6+ years creating beautiful,
-                      user-centered digital experiences for top brands.
-                    </p>
-
-                    <div class="staff-stats">
-                      <div class="stat-item">
-                        <div class="stat-value">850+</div>
-                        <div class="stat-label">Students</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">4.8</div>
-                        <div class="stat-label">Rating</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">8</div>
-                        <div class="stat-label">Courses</div>
-                      </div>
-                    </div>
-
-                    <div class="staff-social">
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-linkedin"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-dribbble"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-behance"></i
-                      ></a>
-                    </div>
-                  </div>
+              <% }); %>
+            <% } else { %>
+              <!-- Empty State -->
+              <div class="col-12">
+                <div class="text-center py-5">
+                  <i class="bi bi-people" style="font-size: 4rem; color: #ccc;"></i>
+                  <h3 class="mt-3 text-muted">No Staff Members Found</h3>
+                  <p class="text-muted">Please check back later.</p>
                 </div>
-              </a>
-            </div>
-
-            <!-- Staff Member 3 -->
-            <div class="col-lg-4 col-md-6">
-              <a href="/staffs-details" class="text-decoration-none">
-                <div class="staff-card">
-                  <div class="staff-image-wrapper">
-                    <img
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500"
-                      alt="John Wilson"
-                    />
-                    <div class="staff-role-badge">Data Analyst</div>
-                  </div>
-                  <div class="staff-content">
-                    <h3 class="staff-name">John Wilson</h3>
-                    <p class="staff-title">Senior Data Analyst</p>
-                    <p class="staff-bio">
-                      Data science expert with 7+ years turning complex data
-                      into actionable insights using Python and SQL.
-                    </p>
-
-                    <div class="staff-stats">
-                      <div class="stat-item">
-                        <div class="stat-value">950+</div>
-                        <div class="stat-label">Students</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">4.9</div>
-                        <div class="stat-label">Rating</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">10</div>
-                        <div class="stat-label">Courses</div>
-                      </div>
-                    </div>
-
-                    <div class="staff-social">
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-linkedin"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-twitter"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-medium"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Staff Member 4 -->
-            <div class="col-lg-4 col-md-6">
-              <a href="/staffs-details" class="text-decoration-none">
-                <div class="staff-card">
-                  <div class="staff-image-wrapper">
-                    <img
-                      src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500"
-                      alt="Vivian Effong"
-                    />
-                    <div class="staff-role-badge">Frontend Expert</div>
-                  </div>
-                  <div class="staff-content">
-                    <h3 class="staff-name">Vivian Effong</h3>
-                    <p class="staff-title">Frontend Specialist</p>
-                    <p class="staff-bio">
-                      Frontend enthusiast with 5+ years building responsive,
-                      accessible web applications with modern frameworks.
-                    </p>
-
-                    <div class="staff-stats">
-                      <div class="stat-item">
-                        <div class="stat-value">720+</div>
-                        <div class="stat-label">Students</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">4.8</div>
-                        <div class="stat-label">Rating</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">7</div>
-                        <div class="stat-label">Courses</div>
-                      </div>
-                    </div>
-
-                    <div class="staff-social">
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-linkedin"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-github"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-codepen"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Staff Member 5 -->
-            <div class="col-lg-4 col-md-6">
-              <a href="/staffs-details" class="text-decoration-none">
-                <div class="staff-card">
-                  <div class="staff-image-wrapper">
-                    <img
-                      src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500"
-                      alt="Samuel Eko"
-                    />
-                    <div class="staff-role-badge">Mobile Dev</div>
-                  </div>
-                  <div class="staff-content">
-                    <h3 class="staff-name">Samuel Eko</h3>
-                    <p class="staff-title">Mobile Developer</p>
-                    <p class="staff-bio">
-                      Mobile app developer with 6+ years creating native and
-                      cross-platform apps for iOS and Android.
-                    </p>
-
-                    <div class="staff-stats">
-                      <div class="stat-item">
-                        <div class="stat-value">680+</div>
-                        <div class="stat-label">Students</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">4.7</div>
-                        <div class="stat-label">Rating</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">6</div>
-                        <div class="stat-label">Courses</div>
-                      </div>
-                    </div>
-
-                    <div class="staff-social">
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-linkedin"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-twitter"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-github"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Staff Member 6 -->
-            <div class="col-lg-4 col-md-6">
-              <a href="/staffs-details" class="text-decoration-none">
-                <div class="staff-card">
-                  <div class="staff-image-wrapper">
-                    <img
-                      src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500"
-                      alt="David James"
-                    />
-                    <div class="staff-role-badge">Backend Dev</div>
-                  </div>
-                  <div class="staff-content">
-                    <h3 class="staff-name">David James</h3>
-                    <p class="staff-title">Backend Developer</p>
-                    <p class="staff-bio">
-                      Backend architect with 9+ years designing scalable systems
-                      and APIs for high-traffic applications.
-                    </p>
-
-                    <div class="staff-stats">
-                      <div class="stat-item">
-                        <div class="stat-value">1,050+</div>
-                        <div class="stat-label">Students</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">4.9</div>
-                        <div class="stat-label">Rating</div>
-                      </div>
-                      <div class="stat-item">
-                        <div class="stat-value">11</div>
-                        <div class="stat-label">Courses</div>
-                      </div>
-                    </div>
-
-                    <div class="staff-social">
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-linkedin"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-github"></i
-                      ></a>
-                      <a href="#" class="social-link"
-                        ><i class="bi bi-stack-overflow"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
+              </div>
+            <% } %>
           </div>
         </div>
       </section>

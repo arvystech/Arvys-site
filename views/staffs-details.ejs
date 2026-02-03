@@ -12,7 +12,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
 
     <style>
       /* Hero Section - Same as About Page */
@@ -408,7 +408,7 @@
     <div class="page-loader" id="pageLoader">
       <div class="loader-content">
         <img
-          src="assets/public/IMAGES/logos/footer-logo.svg"
+          src="/assets/public/IMAGES/logos/footer-logo.svg"
           alt="ARVYS Logo"
           class="loader-logo"
         />
@@ -428,12 +428,12 @@
           <a class="navbar-brand w-auto" href="/">
             <img
               class="logo dark img-fluid"
-              src="assets/public/IMAGES/logos/logo.svg"
+              src="/assets/public/IMAGES/logos/logo.svg"
               alt="Logo"
             />
             <img
               class="logo light img-fluid"
-              src="assets/public/IMAGES/logos/footer-logo.svg"
+              src="/assets/public/IMAGES/logos/footer-logo.svg"
               alt="Logo"
             />
           </a>
@@ -447,12 +447,12 @@
               <a class="logo-link" id="fbs__net-navbarsLabel" href="/">
                 <img
                   class="logo dark img-fluid"
-                  src="assets/public/IMAGES/logos/footer-logo.svg"
+                  src="/assets/public/IMAGES/logos/footer-logo.svg"
                   alt="Logo"
                 />
                 <img
                   class="logo light img-fluid"
-                  src="assets/public/IMAGES/logos/logo.svg"
+                  src="/assets/public/IMAGES/logos/logo.svg"
                   alt="Logo"
                 />
               </a>
@@ -536,7 +536,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-12">
-              <h1 class="hero-title-main">Meet Our Expert<br />Instructors</h1>
+              <h1 class="hero-title-main">Meet Our Expert<br />Instructor</h1>
             </div>
           </div>
         </div>
@@ -547,29 +547,53 @@
         <div class="profile-overlay-card" data-aos="fade-up">
           <div class="profile-image-container">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300"
-              alt="Chinedu Okoro"
+              src="<%= staff.profile_image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300' %>"
+              alt="<%= staff.first_name %> <%= staff.last_name %>"
             />
           </div>
           <div class="profile-info-content">
-            <span class="profile-discipline">Lead Instructor</span>
-            <h2 class="profile-name">Chinedu Okoro</h2>
+            <% if (staff.badge) { %>
+              <span class="profile-discipline"><%= staff.badge %></span>
+            <% } %>
+            <h2 class="profile-name"><%= staff.first_name %> <%= staff.last_name %></h2>
             <p class="mb-3 text-secondary">
-              Senior Full Stack Developer & Tech Educator
+              <%= staff.title %>
             </p>
             <div class="social-links-container">
-              <a href="#" class="social-link-pill"
-                ><i class="bi bi-linkedin"></i
-              ></a>
-              <a href="#" class="social-link-pill"
-                ><i class="bi bi-twitter"></i
-              ></a>
-              <a href="#" class="social-link-pill"
-                ><i class="bi bi-github"></i
-              ></a>
-              <a href="#" class="social-link-pill"
-                ><i class="bi bi-envelope"></i
-              ></a>
+              <% 
+                const socialIconMap = {
+                  'linkedin': 'bi-linkedin',
+                  'twitter': 'bi-twitter',
+                  'github': 'bi-github',
+                  'behance': 'bi-behance',
+                  'dribbble': 'bi-dribbble',
+                  'instagram': 'bi-instagram',
+                  'facebook': 'bi-facebook',
+                  'medium': 'bi-medium',
+                  'codepen': 'bi-codepen',
+                  'stackoverflow': 'bi-stack-overflow'
+                };
+                if (staff.social_links && staff.social_links.length > 0) {
+                  staff.social_links.forEach(link => {
+                    const iconClass = socialIconMap[link.platform.toLowerCase()] || 'bi-link-45deg';
+              %>
+                <a href="<%= link.profile_url %>" class="social-link-pill" target="_blank" rel="noopener">
+                  <i class="bi <%= iconClass %>"></i>
+                </a>
+              <% 
+                  });
+                }
+              %>
+              <!-- Personal Website (if provided) -->
+              <% if (staff.personal_website) { %>
+                <a href="<%= staff.personal_website %>" class="social-link-pill" target="_blank" rel="noopener" title="Personal Website">
+                  <i class="bi bi-globe"></i>
+                </a>
+              <% } %>
+              <!-- Email -->
+              <a href="mailto:<%= staff.email %>" class="social-link-pill" title="Email">
+                <i class="bi bi-envelope"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -580,19 +604,19 @@
         <div class="container">
           <div class="stats-grid">
             <div class="stat-card-minimal">
-              <div class="stat-number">1,200+</div>
+              <div class="stat-number"><%= staff.students_count %>+</div>
               <div class="stat-text">Students Taught</div>
             </div>
             <div class="stat-card-minimal">
-              <div class="stat-number">4.9/5</div>
+              <div class="stat-number"><%= staff.average_rating %>/5</div>
               <div class="stat-text">Average Rating</div>
             </div>
             <div class="stat-card-minimal">
-              <div class="stat-number">12+</div>
+              <div class="stat-number"><%= staff.courses_count %>+</div>
               <div class="stat-text">Courses Created</div>
             </div>
             <div class="stat-card-minimal">
-              <div class="stat-number">8 Years</div>
+              <div class="stat-number"><%= staff.years_experience %> Years</div>
               <div class="stat-text">Experience</div>
             </div>
           </div>
@@ -607,55 +631,37 @@
             <div class="col-lg-8">
               <!-- About -->
               <div class="content-card">
-                <h3>About Chinedu</h3>
-                <p style="color: #646679; line-height: 1.7">
-                  Chinedu is a seasoned full-stack developer with over 8 years
-                  of experience building scalable web applications for startups
-                  and Fortune 500 companies. His passion for teaching stems from
-                  his belief that anyone can learn to code with the right
-                  guidance and dedication.
-                </p>
-                <p style="color: #646679; line-height: 1.7">
-                  He specializes in making complex concepts simple and
-                  digestible. Throughout his career, he has trained over 1,200
-                  students who now work at companies like Google, Microsoft, and
-                  various local tech startups.
-                </p>
+                <h3>About <%= staff.first_name %></h3>
+                <% if (staff.bio) { %>
+                  <p style="color: #646679; line-height: 1.7"><%= staff.bio %></p>
+                <% } else { %>
+                  <p style="color: #646679; line-height: 1.7">No bio available.</p>
+                <% } %>
               </div>
 
               <!-- Experience -->
               <div class="content-card">
                 <h3>Professional Experience</h3>
-                <div class="experience-item">
-                  <div class="experience-role">
-                    Senior Full Stack Instructor
-                  </div>
-                  <div class="experience-company">ARVYS Tech Academy</div>
-                  <div class="experience-duration">2020 - Present</div>
-                  <p style="color: #646679; margin: 0">
-                    Leading curriculum development and teaching advanced
-                    full-stack development courses.
-                  </p>
-                </div>
-
-                <div class="experience-item">
-                  <div class="experience-role">Lead Developer</div>
-                  <div class="experience-company">TechBridge Solutions</div>
-                  <div class="experience-duration">2017 - 2020</div>
-                  <p style="color: #646679; margin: 0">
-                    Led a team of 8 developers in building enterprise web
-                    applications.
-                  </p>
-                </div>
-
-                <div class="experience-item">
-                  <div class="experience-role">Full Stack Developer</div>
-                  <div class="experience-company">Digital Innovations Ltd</div>
-                  <div class="experience-duration">2015 - 2017</div>
-                  <p style="color: #646679; margin: 0">
-                    Developed scalable web applications using modern frameworks.
-                  </p>
-                </div>
+                <% if (staff.experience && staff.experience.length > 0) { %>
+                  <% staff.experience.forEach(exp => { 
+                    const startYear = exp.start_date ? new Date(exp.start_date).getFullYear() : '';
+                    const endYear = exp.is_current ? 'Present' : (exp.end_date ? new Date(exp.end_date).getFullYear() : '');
+                    const duration = startYear && endYear ? `${startYear} - ${endYear}` : '';
+                  %>
+                    <div class="experience-item">
+                      <div class="experience-role"><%= exp.job_title %></div>
+                      <div class="experience-company"><%= exp.company_name %></div>
+                      <% if (duration) { %>
+                        <div class="experience-duration"><%= duration %></div>
+                      <% } %>
+                      <% if (exp.description) { %>
+                        <p style="color: #646679; margin: 0"><%= exp.description %></p>
+                      <% } %>
+                    </div>
+                  <% }); %>
+                <% } else { %>
+                  <p style="color: #646679">No professional experience listed.</p>
+                <% } %>
               </div>
 
               <!-- Courses -->
@@ -664,7 +670,7 @@
 
                 <div class="course-card-inline">
                   <img
-                    src="./assets/images/Frame 123.png"
+                    src="/assets/images/Frame 123.png"
                     alt="Course"
                     class="course-thumbnail"
                   />
@@ -692,7 +698,7 @@
 
                 <div class="course-card-inline">
                   <img
-                    src="./assets/images/Frame 123.png"
+                    src="/assets/images/Frame 123.png"
                     alt="Course"
                     class="course-thumbnail"
                   />
@@ -719,7 +725,7 @@
 
                 <div class="course-card-inline">
                   <img
-                    src="./assets/images/Frame 123.png"
+                    src="/assets/images/Frame 123.png"
                     alt="Course"
                     class="course-thumbnail"
                   />
@@ -753,81 +759,61 @@
               <div class="content-card">
                 <h3>Expertise</h3>
                 <div>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">React</span>
-                  <span class="skill-tag">Node.js</span>
-                  <span class="skill-tag">Express</span>
-                  <span class="skill-tag">MongoDB</span>
-                  <span class="skill-tag">PostgreSQL</span>
-                  <span class="skill-tag">TypeScript</span>
-                  <span class="skill-tag">GraphQL</span>
-                  <span class="skill-tag">AWS</span>
-                  <span class="skill-tag">Docker</span>
+                  <% if (staff.expertise && staff.expertise.length > 0) { %>
+                    <% staff.expertise.forEach(skill => { %>
+                      <span class="skill-tag"><%= skill.category %></span>
+                    <% }); %>
+                  <% } else { %>
+                    <p style="color: #646679; margin: 0">No skills listed.</p>
+                  <% } %>
                 </div>
               </div>
 
               <!-- Certifications -->
               <div class="content-card">
                 <h3>Certifications</h3>
-                <ul class="cert-list">
-                  <li>
-                    <i class="bi bi-award-fill"></i>
-                    <span>AWS Certified Solutions Architect</span>
-                  </li>
-                  <li>
-                    <i class="bi bi-award-fill"></i>
-                    <span>MongoDB Certified Developer</span>
-                  </li>
-                  <li>
-                    <i class="bi bi-award-fill"></i>
-                    <span>Google Cloud Professional</span>
-                  </li>
-                  <li>
-                    <i class="bi bi-award-fill"></i>
-                    <span>Scrum Master Certified</span>
-                  </li>
-                </ul>
+                <% if (staff.certifications && staff.certifications.length > 0) { %>
+                  <ul class="cert-list">
+                    <% staff.certifications.forEach(cert => { %>
+                      <li>
+                        <i class="bi bi-award-fill"></i>
+                        <span><%= cert.certification_name %><% if (cert.issuing_organization) { %> - <%= cert.issuing_organization %><% } %></span>
+                      </li>
+                    <% }); %>
+                  </ul>
+                <% } else { %>
+                  <p style="color: #646679; margin: 0">No certifications listed.</p>
+                <% } %>
               </div>
 
               <!-- Student Testimonials -->
               <div class="content-card">
                 <h3>Student Feedback</h3>
 
-                <div class="testimonial-card">
-                  <p class="testimonial-text">
-                    "Chinedu's teaching style is exceptional. He breaks down
-                    complex topics into understandable chunks."
-                  </p>
-                  <div class="testimonial-author">
-                    <img
-                      src="https://i.pravatar.cc/150?img=1"
-                      alt="Student"
-                      class="testimonial-avatar"
-                    />
-                    <div>
-                      <div class="testimonial-name">John Wilson</div>
-                      <div class="testimonial-role">Frontend Developer</div>
+                <% if (staff.feedback && staff.feedback.length > 0) { %>
+                  <% staff.feedback.forEach(review => { %>
+                    <div class="testimonial-card">
+                      <p class="testimonial-text">
+                        "<%= review.comment %>"
+                      </p>
+                      <div class="testimonial-author">
+                        <img
+                          src="<%= review.student_avatar || 'https://i.pravatar.cc/150?img=' + Math.floor(Math.random() * 70) %>"
+                          alt="<%= review.student_name %>"
+                          class="testimonial-avatar"
+                        />
+                        <div>
+                          <div class="testimonial-name"><%= review.student_name %></div>
+                          <% if (review.course_taken) { %>
+                            <div class="testimonial-role"><%= review.course_taken %></div>
+                          <% } %>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-                <div class="testimonial-card">
-                  <p class="testimonial-text">
-                    "Best instructor I've had! I landed my first developer job
-                    within weeks of graduating."
-                  </p>
-                  <div class="testimonial-author">
-                    <img
-                      src="https://i.pravatar.cc/150?img=5"
-                      alt="Student"
-                      class="testimonial-avatar"
-                    />
-                    <div>
-                      <div class="testimonial-name">Vivian Effong</div>
-                      <div class="testimonial-role">Full Stack Developer</div>
-                    </div>
-                  </div>
-                </div>
+                  <% }); %>
+                <% } else { %>
+                  <p style="color: #646679; margin: 0">No student feedback available yet.</p>
+                <% } %>
               </div>
             </div>
           </div>
@@ -840,7 +826,7 @@
           <div class="row g-4 align-items-start">
             <div class="col-lg-4">
               <img
-                src="assets/public/IMAGES/logos/footer-logo.svg"
+                src="/assets/public/IMAGES/logos/footer-logo.svg"
                 alt="ARVYS Logo"
                 class="img-fluid mb-3"
                 style="max-width: 120px"
@@ -920,9 +906,9 @@
               </form>
 
               <div class="mt-3">
-                <img src="./assets/public/IMAGES/footer-circle.svg" alt="" />
-                <img src="./assets/public/IMAGES/footer-circle.svg" alt="" />
-                <img src="./assets/public/IMAGES/footer-circle.svg" alt="" />
+                <img src="/assets/public/IMAGES/footer-circle.svg" alt="" />
+                <img src="/assets/public/IMAGES/footer-circle.svg" alt="" />
+                <img src="/assets/public/IMAGES/footer-circle.svg" alt="" />
               </div>
             </div>
           </div>
@@ -941,6 +927,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/page-loader.js"></script>
+    <script src="/assets/js/page-loader.js"></script>
   </body>
 </html>

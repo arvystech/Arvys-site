@@ -6,16 +6,16 @@
     <title>Our Courses - ARVYS Tech Academy</title>
 
     <!-- Fonts and Styles -->
-    <link href="assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link
-      href="assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css"
+      href="/assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css"
       rel="stylesheet"
     />
-    <link href="assets/vendors/aos/aos.css" rel="stylesheet" />
+    <link href="/assets/vendors/aos/aos.css" rel="stylesheet" />
 
     <!-- Theme Styles -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/courses.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/courses.css" />
 
     <!-- Theme Script -->
     <script>
@@ -24,6 +24,16 @@
         document.documentElement.setAttribute("data-bs-theme", storedTheme);
       })();
     </script>
+    <style>
+      .text-truncate-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
   </head>
 
   <body>
@@ -205,303 +215,73 @@
         </div>
       </section>
 
+      <!-- Filter Section -->
+      <section class="py-4 bg-white border-bottom">
+        <div class="container">
+          <div class="d-flex flex-wrap justify-content-center gap-2 mb-0">
+            <button class="filter-pill active" data-filter="all">All Courses</button>
+            <button class="filter-pill" data-filter="beginner">Beginner</button>
+            <button class="filter-pill" data-filter="intermediate">Intermediate</button>
+            <button class="filter-pill" data-filter="advanced">Advanced</button>
+          </div>
+        </div>
+      </section>
+
       <!-- Courses Grid -->
       <section class="py-5 bg-light">
-        <div class="container pt-5 pb-5">
+        <div class="container pb-5">
           <div class="row g-4" id="coursesGrid">
-            <!-- Course 1: Full Stack Development -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="intermediate"
-              data-aos="fade-up"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/images/business/business-img-2-min.jpg"
-                      alt="Full Stack"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge intermediate">Intermediate</span>
-                    <h5 class="course-title">Full Stack Development</h5>
-                    <p class="course-desc">
-                      Master frontend and backend with React, Node.js, and
-                      MongoDB. Build complete web applications.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 12 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 350+</span>
+            <% if (courses && courses.length > 0) { %>
+              <% courses.forEach((course, index) => { %>
+                <div
+                  class="col-md-6 col-lg-4 course-item"
+                  data-level="<%= course.level ? course.level.toLowerCase() : 'beginner' %>"
+                  data-aos="fade-up"
+                  data-aos-delay="<%= index * 100 %>"
+                >
+                  <a href="/course-details/<%= course.slug %>" class="text-decoration-none">
+                    <div class="course-card">
+                      <div class="overflow-hidden">
+                        <img
+                          src="<%= course.image_path ? course.image_path : '/assets/images/business/business-img-2-min.jpg' %>"
+                          alt="<%= course.title %>"
+                          class="course-img"
+                        />
+                      </div>
+                      <div class="course-content">
+                        <span class="course-badge <%= course.level ? course.level.toLowerCase() : 'beginner' %>">
+                          <%= course.level %>
+                        </span>
+                        <h5 class="course-title"><%= course.title %></h5>
+                        <p class="course-desc text-truncate-2">
+                          <%= course.tagline %>
+                        </p>
+                        <div class="course-meta">
+                          <span><i class="bi bi-clock me-1"></i> <%= course.duration %></span>
+                          <span>
+                            <% if (course.availability === 'available') { %>
+                              <i class="bi bi-shield-check me-1"></i>
+                            <% } else if (course.availability === 'coming soon') { %>
+                              <i class="bi bi-hourglass-split me-1 text-warning"></i>
+                            <% } else { %>
+                              <i class="bi bi-lock me-1 text-danger"></i>
+                            <% } %>
+                            <%= course.availability %>
+                          </span>
+                        </div>
+                        <div class="course-price">₦<%= course.price ? Number(course.price).toLocaleString() : 'Negotiable' %></div>
+                      </div>
                     </div>
-                    <div class="course-price">₦80,000</div>
-                  </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-
-            <!-- Course 2: Data Science -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="intermediate"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/images/business/business-img-10-min.jpg"
-                      alt="Data Science"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge intermediate">Intermediate</span>
-                    <h5 class="course-title">Data Science & Analytics</h5>
-                    <p class="course-desc">
-                      Learn Python, machine learning, data visualization, and
-                      statistical analysis for data-driven decisions.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 14 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 280+</span>
-                    </div>
-                    <div class="course-price">₦85,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Course 3: Mobile Development -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="intermediate"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/images/business/business-img-6-min.jpg"
-                      alt="Mobile Dev"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge intermediate">Intermediate</span>
-                    <h5 class="course-title">Mobile App Development</h5>
-                    <p class="course-desc">
-                      Build cross-platform mobile apps with React Native and
-                      Flutter. Deploy to iOS and Android.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 10 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 220+</span>
-                    </div>
-                    <div class="course-price">₦75,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Course 4: UI/UX Design -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="beginner"
-              data-aos="fade-up"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/images/business/business-img-3-min.jpg"
-                      alt="UI/UX"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge beginner">Beginner</span>
-                    <h5 class="course-title">UI/UX Design Fundamentals</h5>
-                    <p class="course-desc">
-                      Master Figma, design principles, user research,
-                      wireframing, and prototyping for beautiful interfaces.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 8 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 310+</span>
-                    </div>
-                    <div class="course-price">₦65,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Course 5: Cybersecurity -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="advanced"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/public/IMAGES/code.png"
-                      alt="Cybersecurity"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge advanced">Advanced</span>
-                    <h5 class="course-title">Cybersecurity Fundamentals</h5>
-                    <p class="course-desc">
-                      Learn ethical hacking, network security, penetration
-                      testing, and protect against cyber threats.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 12 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 180+</span>
-                    </div>
-                    <div class="course-price">₦90,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Course 6: DevOps -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="advanced"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/public/IMAGES/code2.png"
-                      alt="DevOps"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge advanced">Advanced</span>
-                    <h5 class="course-title">DevOps Engineering</h5>
-                    <p class="course-desc">
-                      Master CI/CD, Docker, Kubernetes, AWS, and modern
-                      deployment strategies for scalable systems.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 14 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 150+</span>
-                    </div>
-                    <div class="course-price">₦95,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Course 7: Frontend -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="beginner"
-              data-aos="fade-up"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/public/IMAGES/coding.png"
-                      alt="Frontend"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge beginner">Beginner</span>
-                    <h5 class="course-title">Frontend Web Development</h5>
-                    <p class="course-desc">
-                      Learn HTML, CSS, JavaScript, and React. Build responsive,
-                      interactive websites from scratch.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 8 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 420+</span>
-                    </div>
-                    <div class="course-price">₦60,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Course 8: Backend -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="intermediate"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/images/business/business-img-2-min.jpg"
-                      alt="Backend"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge intermediate">Intermediate</span>
-                    <h5 class="course-title">Backend Development</h5>
-                    <p class="course-desc">
-                      Master Node.js, Express, databases, APIs, and server-side
-                      programming for robust applications.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 10 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 290+</span>
-                    </div>
-                    <div class="course-price">₦70,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <!-- Course 9: Digital Marketing -->
-            <div
-              class="col-md-6 col-lg-4 course-item"
-              data-level="beginner"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <a href="/course-details" class="text-decoration-none">
-                <div class="course-card">
-                  <div class="overflow-hidden">
-                    <img
-                      src="./assets/images/business/business-img-10-min.jpg"
-                      alt="Marketing"
-                      class="course-img"
-                    />
-                  </div>
-                  <div class="course-content">
-                    <span class="course-badge beginner">Beginner</span>
-                    <h5 class="course-title">Digital Marketing Mastery</h5>
-                    <p class="course-desc">
-                      Learn SEO, social media, content marketing, analytics, and
-                      grow your online presence effectively.
-                    </p>
-                    <div class="course-meta">
-                      <span><i class="bi bi-clock me-1"></i> 6 Weeks</span>
-                      <span><i class="bi bi-people me-1"></i> 380+</span>
-                    </div>
-                    <div class="course-price">₦55,000</div>
-                  </div>
-                </div>
-              </a>
-            </div>
+              <% }); %>
+            <% } else { %>
+              <div class="col-12 text-center py-5">
+                <i class="bi bi-journal-x display-1 text-muted"></i>
+                <h3 class="mt-3">No courses found</h3>
+                <p>Check back later for new course offerings!</p>
+              </div>
+            <% } %>
           </div>
         </div>
       </section>
@@ -612,9 +392,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendors/aos/aos.js"></script>
-    <script src="./assets/js/page-loader.js"></script>
+    <script src="/assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/aos/aos.js"></script>
+    <script src="/assets/js/page-loader.js"></script>
 
     <script>
       // Init AOS
@@ -636,25 +416,30 @@
           // Add active to clicked
           pill.classList.add("active");
 
-          const filter = pill.dataset.filter;
+          const filter = pill.dataset.filter.toLowerCase();
 
           courseItems.forEach((item) => {
-            const itemLevel = item.dataset.level;
+            const itemLevel = item.dataset.level.toLowerCase();
+            
             if (filter === "all" || itemLevel === filter) {
-              item.style.display = "block";
-              // Small delay to allow display:block to apply before opacity transition
+              item.classList.remove('d-none');
               setTimeout(() => {
                 item.style.opacity = "1";
                 item.style.transform = "scale(1)";
               }, 10);
             } else {
               item.style.opacity = "0";
-              item.style.transform = "scale(0.9)";
+              item.style.transform = "scale(0.95)";
               setTimeout(() => {
-                item.style.display = "none";
+                item.classList.add('d-none');
               }, 300);
             }
           });
+
+          // Refresh AOS animations for visible items
+          setTimeout(() => {
+            AOS.refresh();
+          }, 350);
         });
       });
     </script>

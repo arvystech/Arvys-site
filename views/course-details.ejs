@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Full Stack Development - ARVYS Tech Academy</title>
+    <title><%= course.title %> - ARVYS Tech Academy</title>
 
     <!-- Fonts and Styles -->
-    <link href="assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="assets/vendors/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="/assets/vendors/aos/aos.css" rel="stylesheet">
 
     <!-- Theme Styles -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/courses.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/courses.css">
 
     <style>
         /* Main Content Styles */
@@ -376,7 +376,7 @@
     <!-- Modern Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-content">
-            <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="loader-logo">
+            <img src="/assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="loader-logo">
             <div class="spinner"></div>
             <div class="loader-text">LOADING</div>
             <div class="loader-progress"></div>
@@ -389,16 +389,16 @@
         <header class="fbs__net-navbar navbar navbar-expand-lg dark position-fixed" aria-label="Navbar">
             <div class="container d-flex align-items-center justify-content-between" style="height: 60px;">
                 <a class="navbar-brand w-auto" href="/">
-                    <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
-                    <img class="logo light img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
+                    <img class="logo dark img-fluid" src="/assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                    <img class="logo light img-fluid" src="/assets/public/IMAGES/logos/footer-logo.svg" alt="Logo">
                 </a>
 
                 <div class="offcanvas offcanvas-start w-75" id="fbs__net-navbars" tabindex="-1">
                     <div class="offcanvas-header">
                         <a class="logo-link" id="fbs__net-navbarsLabel" href="/">
-                            <img class="logo dark img-fluid" src="assets/public/IMAGES/logos/footer-logo.svg"
+                            <img class="logo dark img-fluid" src="/assets/public/IMAGES/logos/footer-logo.svg"
                                 alt="Logo">
-                            <img class="logo light img-fluid" src="assets/public/IMAGES/logos/logo.svg" alt="Logo">
+                            <img class="logo light img-fluid" src="/assets/public/IMAGES/logos/logo.svg" alt="Logo">
                         </a>
                         <button class="btn-close btn-close-black" type="button" data-bs-dismiss="offcanvas"></button>
                     </div>
@@ -444,34 +444,33 @@
                         <nav aria-label="breadcrumb" class="breadcrumb-custom mb-3">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/courses">Courses</a></li>
-                                <li class="breadcrumb-item"><a href="#">Development</a></li>
-                                <li class="breadcrumb-item active">Full Stack</li>
+                                <li class="breadcrumb-item active"><%= course.title %></li>
                             </ol>
                         </nav>
 
-                        <h1 class="text-white fw-bold mb-3" style="font-family: 'Eudoxus-extrabold', sans-serif;">Full
-                            Stack Development Bootcamp</h1>
+                        <h1 class="text-white fw-bold mb-3" style="font-family: 'Eudoxus-extrabold', sans-serif;"><%= course.title %></h1>
                         <p class="lead mb-4 text-light" style="opacity: 0.9; line-height: 1.7;">
-                            Become a professional web developer. Master React, Node.js, Express, and MongoDB.
-                            Build real-world projects and launch your tech career.
+                            <%= course.tagline %>
                         </p>
 
                         <div class="course-meta-badges">
                             <div class="meta-badge">
                                 <i class="bi bi-clock"></i>
-                                <span>12 Weeks</span>
+                                <span><%= course.duration %></span>
                             </div>
                             <div class="meta-badge">
-                                <i class="bi bi-people"></i>
-                                <span>350+ Students</span>
-                            </div>
-                            <div class="meta-badge">
-                                <i class="bi bi-star-fill"></i>
-                                <span>4.9 Rating</span>
+                                <% if (course.availability === 'available') { %>
+                                    <i class="bi bi-shield-check"></i>
+                                <% } else if (course.availability === 'coming soon') { %>
+                                    <i class="bi bi-hourglass-split"></i>
+                                <% } else { %>
+                                    <i class="bi bi-lock"></i>
+                                <% } %>
+                                <span class="text-capitalize"><%= course.availability %></span>
                             </div>
                             <div class="meta-badge">
                                 <i class="bi bi-bar-chart"></i>
-                                <span>Intermediate Level</span>
+                                <span><%= course.level %> Level</span>
                             </div>
                         </div>
 
@@ -479,7 +478,7 @@
                             <small class="text-light d-block mb-3">Course Instructors</small>
                             <div class="d-flex flex-wrap gap-3">
                                 <div class="d-flex align-items-center gap-2">
-                                    <img src="./assets/public/IMAGES/team/ayuk.png" class="rounded-circle" width="40"
+                                    <img src="/assets/public/IMAGES/team/ayuk.png" class="rounded-circle" width="40"
                                         height="40" style="object-fit: cover; border: 2px solid white;"
                                         alt="Eteng Eteng">
                                     <div>
@@ -488,7 +487,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img src="./assets/public/IMAGES/students/john.png" class="rounded-circle"
+                                    <img src="/assets/public/IMAGES/students/john.png" class="rounded-circle"
                                         width="40" height="40" style="object-fit: cover; border: 2px solid white;"
                                         alt="John Wilson">
                                     <div>
@@ -497,7 +496,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center gap-2">
-                                    <img src="./assets/public/IMAGES/students/vivian.png" class="rounded-circle"
+                                    <img src="/assets/public/IMAGES/students/vivian.png" class="rounded-circle"
                                         width="40" height="40" style="object-fit: cover; border: 2px solid white;"
                                         alt="Vivian Effong">
                                     <div>
@@ -541,42 +540,20 @@
                             <div class="content-section" data-aos="fade-up">
                                 <h5 class="section-title">What You'll Learn</h5>
                                 <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <div class="skill-item">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <span>Build full-stack web applications from scratch</span>
+                                    <% if (course.outcomes && course.outcomes.length > 0) { %>
+                                        <% course.outcomes.forEach(outcome => { %>
+                                            <div class="col-md-6">
+                                                <div class="skill-item">
+                                                    <i class="bi bi-check-circle-fill"></i>
+                                                    <span><%= outcome.title %></span>
+                                                </div>
+                                            </div>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <div class="col-12">
+                                            <p class="text-muted">Stay tuned for the detailed learning objectives!</p>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="skill-item">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <span>Master React.js for dynamic frontend UIs</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="skill-item">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <span>Create RESTful APIs with Node.js and Express</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="skill-item">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <span>Manage databases with MongoDB and SQL</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="skill-item">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <span>Implement authentication and security best practices</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="skill-item">
-                                            <i class="bi bi-check-circle-fill"></i>
-                                            <span>Deploy applications to cloud platforms</span>
-                                        </div>
-                                    </div>
+                                    <% } %>
                                 </div>
                             </div>
 
@@ -586,7 +563,7 @@
                                     <div data-aos="fade-up">
                                         <!-- Video/Image Preview -->
                                         <div class="hero-media-wrapper mb-3 bg-white position-relative">
-                                            <img src="./assets/images/business/business-img-2-min.jpg" class="w-100"
+                                            <img src="<%= course.image_path ? course.image_path : '/assets/images/business/business-img-2-min.jpg' %>" class="w-100"
                                                 style="height: 200px; object-fit: cover;" alt="Preview">
                                             <div class="play-button">
                                                 <i class="bi bi-play-fill text-primary"></i>
@@ -599,13 +576,10 @@
 
                                         <div class="enroll-card">
                                             <div class="d-flex align-items-center mb-3">
-                                                <h2 class="fw-bold text-primary mb-0">₦80,000</h2>
-                                                <span
-                                                    class="text-decoration-line-through text-muted ms-3">₦120,000</span>
-                                                <span class="badge bg-danger ms-auto">33% OFF</span>
+                                                <h2 class="fw-bold text-primary mb-0">₦<%= course.price ? Number(course.price).toLocaleString() : 'Negotiable' %></h2>
                                             </div>
 
-                                            <a href="/it-register"
+                                            <a href="/it-register?course=<%= course.slug %>"
                                                 class="btn btn-primary w-100 rounded-pill btn-lg mb-3">
                                                 Enroll Now
                                             </a>
@@ -668,21 +642,12 @@
                                 </div>
                             </div>
 
-                            <!-- Course Description -->
+                             <!-- Course Description -->
                             <div class="content-section" data-aos="fade-up">
                                 <h5 class="section-title">Course Description</h5>
-                                <p class="text-secondary" style="line-height: 1.7;">
-                                    This comprehensive bootcamp is designed to take you from a complete beginner to a
-                                    job-ready full stack developer.
-                                    You will learn the industry-standard MERN stack (MongoDB, Express, React, Node.js)
-                                    through hands-on projects and real-world scenarios.
-                                </p>
-                                <p class="text-secondary mb-0" style="line-height: 1.7;">
-                                    Whether you want to work as a freelancer, join a top tech company, or build your own
-                                    startup, this course provides
-                                    the solid foundation and advanced skills you need to succeed in the modern tech
-                                    landscape.
-                                </p>
+                                <div class="text-secondary" style="line-height: 1.7; white-space: pre-line;">
+                                    <%= course.description %>
+                                </div>
                             </div>
 
                             <!-- Requirements -->
@@ -709,158 +674,44 @@
                             <!-- Curriculum -->
                             <div class="content-section" data-aos="fade-up">
                                 <h5 class="section-title">Course Curriculum</h5>
-                                <p class="text-secondary mb-4">9 comprehensive modules with 50+ lessons</p>
+                                <p class="text-secondary mb-4">
+                                    <%= course.curriculum ? course.curriculum.length : 0 %> comprehensive modules
+                                </p>
 
-                                <div class="curriculum-item active">
-                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
-                                        <div class="d-flex align-items-center flex-grow-1">
-                                            <div class="curriculum-number">01</div>
-                                            <div>
-                                                <div class="fw-bold">Web Fundamentals & JavaScript</div>
-                                                <small class="text-secondary">Weeks 1-2 • 8 lessons</small>
+                                <% if (course.curriculum && course.curriculum.length > 0) { %>
+                                    <% course.curriculum.forEach((section, sIndex) => { %>
+                                        <div class="curriculum-item <%= sIndex === 0 ? 'active' : '' %>">
+                                            <div class="curriculum-header" onclick="toggleCurriculum(this)">
+                                                <div class="d-flex align-items-center flex-grow-1">
+                                                    <div class="curriculum-number"><%= (sIndex + 1).toString().padStart(2, '0') %></div>
+                                                    <div>
+                                                        <div class="fw-bold"><%= section.title %></div>
+                                                        <small class="text-secondary"><%= section.duration %></small>
+                                                    </div>
+                                                </div>
+                                                <i class="bi bi-chevron-down"></i>
+                                            </div>
+                                            <div class="curriculum-body">
+                                                <% if (section.topics && section.topics.length > 0) { %>
+                                                    <% section.topics.forEach(topic => { %>
+                                                        <div class="lesson-item">
+                                                            <i class="bi bi-play-circle"></i>
+                                                            <span><%= topic.title %></span>
+                                                        </div>
+                                                    <% }); %>
+                                                <% } %>
+                                                <% if (section.section_project) { %>
+                                                    <div class="lesson-item mt-2">
+                                                        <i class="bi bi-file-text"></i>
+                                                        <span><strong>Project:</strong> <%= section.section_project %></span>
+                                                    </div>
+                                                <% } %>
                                             </div>
                                         </div>
-                                        <i class="bi bi-chevron-down"></i>
-                                    </div>
-                                    <div class="curriculum-body">
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Introduction to HTML5 & Semantic Elements</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>CSS3 Styling, Flexbox & Grid Layout</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Responsive Design Principles</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>JavaScript Basics & ES6+ Features</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-file-text"></i>
-                                            <span><strong>Project:</strong> Build Your First Portfolio Website</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="curriculum-item">
-                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
-                                        <div class="d-flex align-items-center flex-grow-1">
-                                            <div class="curriculum-number">02</div>
-                                            <div>
-                                                <div class="fw-bold">Advanced JavaScript & React</div>
-                                                <small class="text-secondary">Weeks 3-5 • 12 lessons</small>
-                                            </div>
-                                        </div>
-                                        <i class="bi bi-chevron-down"></i>
-                                    </div>
-                                    <div class="curriculum-body">
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Async Programming & Promises</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>React Components & JSX</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>State Management with Hooks</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-file-text"></i>
-                                            <span><strong>Project:</strong> Build a Todo App with React</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="curriculum-item">
-                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
-                                        <div class="d-flex align-items-center flex-grow-1">
-                                            <div class="curriculum-number">03</div>
-                                            <div>
-                                                <div class="fw-bold">Backend with Node.js & Express</div>
-                                                <small class="text-secondary">Weeks 6-8 • 10 lessons</small>
-                                            </div>
-                                        </div>
-                                        <i class="bi bi-chevron-down"></i>
-                                    </div>
-                                    <div class="curriculum-body">
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Node.js Runtime & NPM</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Building RESTful APIs</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Authentication with JWT</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-file-text"></i>
-                                            <span><strong>Project:</strong> Build a Blog API</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="curriculum-item">
-                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
-                                        <div class="d-flex align-items-center flex-grow-1">
-                                            <div class="curriculum-number">04</div>
-                                            <div>
-                                                <div class="fw-bold">Database & Full Stack Integration</div>
-                                                <small class="text-secondary">Weeks 9-11 • 10 lessons</small>
-                                            </div>
-                                        </div>
-                                        <i class="bi bi-chevron-down"></i>
-                                    </div>
-                                    <div class="curriculum-body">
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>MongoDB & Mongoose</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Connecting Frontend to Backend</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-file-text"></i>
-                                            <span><strong>Project:</strong> E-Commerce Application</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="curriculum-item">
-                                    <div class="curriculum-header" onclick="toggleCurriculum(this)">
-                                        <div class="d-flex align-items-center flex-grow-1">
-                                            <div class="curriculum-number">05</div>
-                                            <div>
-                                                <div class="fw-bold">Deployment & Capstone Project</div>
-                                                <small class="text-secondary">Week 12 • 6 lessons</small>
-                                            </div>
-                                        </div>
-                                        <i class="bi bi-chevron-down"></i>
-                                    </div>
-                                    <div class="curriculum-body">
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Git & GitHub Workflows</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-play-circle"></i>
-                                            <span>Deployment to AWS/Heroku/Vercel</span>
-                                        </div>
-                                        <div class="lesson-item">
-                                            <i class="bi bi-file-text"></i>
-                                            <span><strong>Final Project:</strong> Your Own Full Stack App</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <% }); %>
+                                <% } else { %>
+                                    <p class="text-muted">The curriculum for this course is currently under development.</p>
+                                <% } %>
                             </div>
 
 
@@ -995,7 +846,7 @@
 
                                 <!-- Video/Image Preview -->
                                 <div class="hero-media-wrapper mb-3 bg-white position-relative">
-                                    <img src="./assets/images/business/business-img-2-min.jpg" class="w-100"
+                                    <img src="<%= course.image_path ? course.image_path : '/assets/images/business/business-img-2-min.jpg' %>" class="w-100"
                                         style="height: 200px; object-fit: cover;" alt="Preview">
                                     <div class="play-button">
                                         <i class="bi bi-play-fill text-primary"></i>
@@ -1008,12 +859,10 @@
 
                                 <div class="enroll-card">
                                     <div class="d-flex align-items-center mb-3">
-                                        <h2 class="fw-bold text-primary mb-0">₦80,000</h2>
-                                        <span class="text-decoration-line-through text-muted ms-3">₦120,000</span>
-                                        <span class="badge bg-danger ms-auto">33% OFF</span>
+                                        <h2 class="fw-bold text-primary mb-0">₦<%= course.price ? Number(course.price).toLocaleString() : 'Negotiable' %></h2>
                                     </div>
 
-                                    <a href="/it-register" class="btn btn-primary w-100 rounded-pill btn-lg mb-3">
+                                    <a href="/it-register?course=<%= course.slug %>" class="btn btn-primary w-100 rounded-pill btn-lg mb-3">
                                         Enroll Now
                                     </a>
 
@@ -1085,7 +934,7 @@
         <div class="container">
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4">
-                    <img src="assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="img-fluid mb-3"
+                    <img src="/assets/public/IMAGES/logos/footer-logo.svg" alt="ARVYS Logo" class="img-fluid mb-3"
                         style="max-width: 120px;">
                     <h2 class="mb-0 text-white">The No. 1 Tech Academy for tertiary students.</h2>
                     <p class="text-white small" style="width: 85%;">
@@ -1123,9 +972,9 @@
                             style="background-color: #6C65EF;">Subscribe</button>
                     </form>
                     <div class="mt-3">
-                        <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
-                        <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
-                        <img src="./assets/public/IMAGES/footer-circle.svg" alt="">
+                        <img src="/assets/public/IMAGES/footer-circle.svg" alt="">
+                        <img src="/assets/public/IMAGES/footer-circle.svg" alt="">
+                        <img src="/assets/public/IMAGES/footer-circle.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -1143,20 +992,18 @@
     <div class="mobile-bottom-nav d-lg-none">
         <div class="d-flex align-items-center justify-content-between">
             <div class="mobile-price-info">
-                <span class="mobile-price">₦80,000</span>
-                <span class="mobile-price-old">₦120,000</span>
-                <span class="mobile-discount">33% OFF</span>
+                <span class="mobile-price">₦<%= course.price ? Number(course.price).toLocaleString() : 'Negotiable' %></span>
             </div>
-            <a href="/it-register" class="btn btn-primary rounded-pill px-4">Enroll Now</a>
+            <a href="/it-register?course=<%= course.slug %>" class="btn btn-primary rounded-pill px-4">Enroll Now</a>
         </div>
     </div>
 
     </div>
 
     <!-- Scripts -->
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendors/aos/aos.js"></script>
-    <script src="./assets/js/page-loader.js"></script>
+    <script src="/assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/aos/aos.js"></script>
+    <script src="/assets/js/page-loader.js"></script>
 
     <script>
         // Init AOS
@@ -1167,14 +1014,17 @@
             mirror: false
         });
 
-        // Simple Nav Active State
-        const navLinks = document.querySelectorAll('.course-nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+        // Toggle Curriculum
+        function toggleCurriculum(header) {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(header) {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        }
     </script>
 </body>
 

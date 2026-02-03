@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | ARVYS Tech Academy</title>
+
+    <!-- Fonts and Styles -->
+    <link href="/assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="/assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link href="/assets/vendors/aos/aos.css" rel="stylesheet" />
+
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/courses.css" />
+
+    <style>
+      .error-section {
+        padding: 150px 0 100px;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      }
+
+      .error-content h1 {
+        font-size: 10rem;
+        font-weight: 900;
+        color: #6c65ef;
+        line-height: 1;
+        margin-bottom: 20px;
+        font-family: "Eudoxus-extrabold", sans-serif;
+        opacity: 0.1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        width: 100%;
+      }
+
+      .error-wrapper {
+        position: relative;
+        z-index: 1;
+      }
+
+      .error-title {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 20px;
+        font-family: "Eudoxus-extrabold", sans-serif;
+      }
+
+      .error-text {
+        font-size: 1.25rem;
+        color: #64748b;
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-primary-custom {
+        background-color: #6c65ef;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        box-shadow: 0 10px 20px rgba(108, 101, 239, 0.2);
+      }
+
+      .btn-primary-custom:hover {
+        background-color: #5a54d6;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(108, 101, 239, 0.3);
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Modern Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <div class="loader-content">
+        <img
+          src="/assets/public/IMAGES/logos/footer-logo.svg"
+          alt="ARVYS Logo"
+          class="loader-logo"
+        />
+        <div class="spinner"></div>
+        <div class="loader-text">LOADING</div>
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+
+    <div class="site-wrap">
+      <!-- Header -->
+      <header
+        class="fbs__net-navbar navbar navbar-expand-lg dark position-fixed"
+        aria-label="Navbar"
+      >
+        <div
+          class="container d-flex align-items-center justify-content-between"
+          style="height: 60px"
+        >
+          <a class="navbar-brand w-auto" href="/">
+            <img
+              class="logo dark img-fluid"
+              src="/assets/public/IMAGES/logos/logo.svg"
+              alt="Logo"
+            />
+            <img
+              class="logo light img-fluid"
+              src="/assets/public/IMAGES/logos/footer-logo.svg"
+              alt="Logo"
+            />
+          </a>
+
+          <div
+            class="offcanvas offcanvas-start w-75"
+            id="fbs__net-navbars"
+            tabindex="-1"
+          >
+            <div class="offcanvas-header">
+              <a class="logo-link" id="fbs__net-navbarsLabel" href="/">
+                <img
+                  class="logo dark img-fluid"
+                  src="/assets/public/IMAGES/logos/footer-logo.svg"
+                  alt="Logo"
+                />
+                <img
+                  class="logo light img-fluid"
+                  src="/assets/public/IMAGES/logos/logo.svg"
+                  alt="Logo"
+                />
+              </a>
+              <button
+                class="btn-close btn-close-black"
+                type="button"
+                data-bs-dismiss="offcanvas"
+              ></button>
+            </div>
+
+            <div class="offcanvas-body align-items-lg-center">
+              <ul
+                class="navbar-nav nav me-auto ps-lg-5 mb-2 mb-lg-0 mx-auto text-center fw-bold"
+              >
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/courses">Courses</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/industrial-training"
+                    >Industrial Training</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/staffs">Team</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/it-register">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-2 sign-btns">
+            <a
+              class="p-0 text-black"
+              href="/login"
+              style="text-decoration: none"
+              >Log In</a
+            >
+            <a
+              class="btn rounded-pill px-3 btn-sm d-flex align-items-center"
+              style="color: white !important; height: 30px"
+              href="/it-register"
+              >Register</a
+            >
+
+            <button
+              class="fbs__net-navbar-toggler ms-2"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#fbs__net-navbars"
+            >
+              <svg
+                class="fbs__net-icon-menu"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="21" y1="6" x2="3" y2="6"></line>
+                <line x1="15" y1="12" x2="3" y2="12"></line>
+                <line x1="17" y1="18" x2="3" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Error Content -->
+      <section class="error-section">
+        <div class="container text-center">
+          <div class="error-content" data-aos="fade-up">
+            <h1>404</h1>
+            <div class="error-wrapper">
+              <h2 class="error-title">Oops! Page Not Found</h2>
+              <p class="error-text">
+                We couldn't find the page you were looking for. It might have
+                been moved, renamed, or perhaps it never existed.
+              </p>
+              <div
+                class="d-flex flex-column flex-sm-row gap-3 justify-content-center"
+              >
+                <a href="/" class="btn-primary-custom">
+                  <i class="bi bi-house-door me-2"></i>Return Home
+                </a>
+                <a
+                  href="/courses"
+                  class="btn btn-outline-dark rounded-pill px-5 py-3 fw-bold"
+                >
+                  View Courses
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-5 custom-footer" id="footer">
+        <div class="container">
+          <div class="row g-4 align-items-start">
+            <div class="col-lg-4">
+              <img
+                src="/assets/public/IMAGES/logos/footer-logo.svg"
+                alt="ARVYS Logo"
+                class="img-fluid mb-3"
+                style="max-width: 120px"
+              />
+              <h2 class="mb-0 text-white">
+                The No. 1 Tech Academy for tertiary students.
+              </h2>
+              <p class="text-white small" style="width: 85%">
+                At ARVYS, we operate with the belief that excellence is
+                attainable through consistency.
+              </p>
+            </div>
+
+            <div class="col-6 col-lg-2">
+              <h6 class="fw-semibold mb-3 text-white">Quick Links</h6>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="/" class="text-decoration-none text-white">Home</a>
+                </li>
+                <li>
+                  <a href="/courses" class="text-decoration-none text-white"
+                    >Courses</a
+                  >
+                </li>
+                <li>
+                  <a href="/staffs" class="text-decoration-none text-white"
+                    >Team</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/industrial-training"
+                    class="text-decoration-none text-white"
+                    >Industrial Training</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-lg-2">
+              <h6 class="fw-semibold mb-3 text-white">Company</h6>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="/about" class="text-decoration-none text-white"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="/#contact" class="text-decoration-none text-white"
+                    >Contact Us</a
+                  >
+                </li>
+                <li>
+                  <a href="/it-register" class="text-decoration-none text-white"
+                    >Register</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-4">
+              <h6 class="fw-semibold mb-3 text-white">Join Our Newsletter</h6>
+              <form class="input-group">
+                <input
+                  type="email"
+                  class="form-control bg-white rounded-start-pill"
+                  placeholder="Enter your email"
+                  required
+                />
+                <button
+                  type="submit"
+                  class="btn rounded-end-pill"
+                  style="background-color: #6c65ef"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <hr class="my-4 border-muted" />
+
+          <div class="text-center small text-white">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            ARVYS. All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/aos/aos.js"></script>
+    <script src="/assets/js/page-loader.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
+  </body>
+</html>
