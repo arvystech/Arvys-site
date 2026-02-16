@@ -4,10 +4,16 @@ const db = require('../config/db');
 const multer = require('multer');
 const path = require('path');
 
+const fs = require('fs');
+
 // Multer Configuration for Staff Images
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/uploads/staff');
+        const dir = 'public/uploads/staff';
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+        cb(null, dir);
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
