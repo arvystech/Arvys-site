@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const db = require('./config/db');
+const session = require('express-session');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,15 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'arvys_secret_key_2024', // Should be in .env for production
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        secure: false // Set to true if using HTTPS
+    }
+}));
 
 // Serve static files from the 'public' directory (css, js, images)
 app.use(express.static(path.join(__dirname, 'public')));

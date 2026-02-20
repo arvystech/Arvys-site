@@ -8,7 +8,7 @@
 
     <!-- ======= Styles =======-->
     <link href="/assets/vendors/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="/assets/vendors/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link href="/assets/vendors/aos/aos.css" rel="stylesheet" />
     <link href="/assets/css/style.css" rel="stylesheet" />
 
@@ -196,14 +196,14 @@
             </li>
 
             <!-- Quick Links -->
-            <li class="nav-item mt-5 pt-3 border-top">
-                <a href="/courses" class="nav-link">
-                    <i class="bi bi-eye"></i> View Website
-                </a>
-            </li>
             <li class="nav-item">
                 <a href="/" class="nav-link">
                     <i class="bi bi-house"></i> Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/manager/logout" class="nav-link text-danger">
+                    <i class="bi bi-box-arrow-right"></i> Logout
                 </a>
             </li>
         </ul>
@@ -452,7 +452,7 @@
                                         <td>
                                             <div style="font-size: 0.8rem;">
                                                 <i class="bi bi-people me-1"></i><%= member.students_count || 0 %> | 
-                                                <i class="bi bi-star-fill text-warning me-1"></i><%= member.average_rating || '0.0' %>
+                                                <i class="bi bi-star-fill text-warning me-1"></i><%= Number(member.average_rating || 0).toFixed(1) %>/5
                                             </div>
                                         </td>
                                         <td>
@@ -613,12 +613,16 @@
                                         <div class="col-md-5">
                                             <select class="form-select social-platform">
                                                 <option value="linkedin">LinkedIn</option>
-                                                <option value="twitter">Twitter</option>
+                                                <option value="twitter">Twitter / X</option>
                                                 <option value="github">GitHub</option>
-                                                <option value="behance">Behance</option>
-                                                <option value="dribbble">Dribbble</option>
                                                 <option value="facebook">Facebook</option>
                                                 <option value="instagram">Instagram</option>
+                                                <option value="dribbble">Dribbble</option>
+                                                <option value="behance">Behance</option>
+                                                <option value="youtube">YouTube</option>
+                                                <option value="tiktok">TikTok</option>
+                                                <option value="whatsapp">WhatsApp</option>
+                                                <option value="medium">Medium</option>
                                             </select>
                                         </div>
                                         <div class="col-md-7">
@@ -764,7 +768,7 @@
                     document.getElementById('staffSkillsContainer').innerHTML = '<div class="dynamic-item"><div class="row g-3"><div class="col-md-8"><input type="text" class="form-control skill-category" placeholder="Skill/Category" required></div><div class="col-md-4"><select class="form-select skill-level"><option value="Beginner">Beginner</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option><option value="Expert">Expert</option></select></div></div></div>';
                     document.getElementById('staffExperienceContainer').innerHTML = '<div class="dynamic-item exp-block"><div class="row g-3"><div class="col-md-6"><input type="text" class="form-control exp-job-title" placeholder="Job Title" required></div><div class="col-md-6"><input type="text" class="form-control exp-company" placeholder="Company Name" required></div><div class="col-md-6"><label class="form-label small">Start Date</label><input type="date" class="form-control exp-start-date"></div><div class="col-md-6"><label class="form-label small">End Date</label><input type="date" class="form-control exp-end-date"></div><div class="col-12"><textarea class="form-control exp-description" rows="2" placeholder="Brief description..."></textarea></div></div></div>';
                     document.getElementById('staffCertsContainer').innerHTML = '<div class="dynamic-item cert-block"><div class="row g-3"><div class="col-md-6"><input type="text" class="form-control cert-name" placeholder="Certification Name" required></div><div class="col-md-6"><input type="text" class="form-control cert-org" placeholder="Organization" required></div></div></div>';
-                    document.getElementById('staffSocialContainer').innerHTML = '<div class="dynamic-item social-block"><div class="row g-3"><div class="col-md-5"><select class="form-select social-platform"><option value="linkedin">LinkedIn</option><option value="twitter">Twitter</option><option value="github">GitHub</option></select></div><div class="col-md-7"><input type="url" class="form-control social-url" placeholder="URL" required></div></div></div>';
+                    document.getElementById('staffSocialContainer').innerHTML = '<div class="dynamic-item social-block"><div class="row g-3"><div class="col-md-5"><select class="form-select social-platform"><option value="linkedin">LinkedIn</option><option value="twitter">Twitter / X</option><option value="github">GitHub</option><option value="facebook">Facebook</option><option value="instagram">Instagram</option><option value="dribbble">Dribbble</option><option value="behance">Behance</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="whatsapp">WhatsApp</option><option value="medium">Medium</option></select></div><div class="col-md-7"><input type="url" class="form-control social-url" placeholder="URL" required></div></div></div>';
                     pageTitle.innerText = "Add New Staff Member";
                 } else {
                     pageTitle.innerText = "Edit Staff";
@@ -860,14 +864,33 @@
         }
 
         function addStaffSocial() {
+            const container = document.getElementById('staffSocialContainer');
+            if (container.querySelectorAll('.social-block').length >= 3) {
+                alert("Maximum 3 social links allowed.");
+                return;
+            }
             const div = document.createElement('div');
             div.className = 'dynamic-item social-block';
             div.innerHTML = `<i class="bi bi-x-circle remove-btn" onclick="this.parentElement.remove()"></i>
                 <div class="row g-3">
-                    <div class="col-md-5"><select class="form-select social-platform"><option value="linkedin">LinkedIn</option><option value="twitter">Twitter</option><option value="github">GitHub</option></select></div>
+                    <div class="col-md-5">
+                        <select class="form-select social-platform">
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="twitter">Twitter / X</option>
+                            <option value="github">GitHub</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="dribbble">Dribbble</option>
+                            <option value="behance">Behance</option>
+                            <option value="youtube">YouTube</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="medium">Medium</option>
+                        </select>
+                    </div>
                     <div class="col-md-7"><input type="url" class="form-control social-url" placeholder="URL" required></div>
                 </div>`;
-            document.getElementById('staffSocialContainer').appendChild(div);
+            container.appendChild(div);
         }
 
         // Course Edit Functionality
@@ -1029,12 +1052,26 @@
                     // Social
                     const socialCont = document.getElementById('staffSocialContainer');
                     socialCont.innerHTML = "";
-                    staff.social_links.forEach(link => {
+                    staff.social_links.slice(0, 3).forEach(link => {
                         const div = document.createElement('div');
                         div.className = 'dynamic-item social-block';
                         div.innerHTML = `<i class="bi bi-x-circle remove-btn" onclick="this.parentElement.remove()"></i>
                             <div class="row g-3">
-                                <div class="col-md-5"><select class="form-select social-platform"><option value="linkedin" ${link.platform === 'linkedin' ? 'selected' : ''}>LinkedIn</option><option value="twitter" ${link.platform === 'twitter' ? 'selected' : ''}>Twitter</option><option value="github" ${link.platform === 'github' ? 'selected' : ''}>GitHub</option><option value="behance" ${link.platform === 'behance' ? 'selected' : ''}>Behance</option><option value="dribbble" ${link.platform === 'dribbble' ? 'selected' : ''}>Dribbble</option><option value="facebook" ${link.platform === 'facebook' ? 'selected' : ''}>Facebook</option><option value="instagram" ${link.platform === 'instagram' ? 'selected' : ''}>Instagram</option></select></div>
+                                <div class="col-md-5">
+                                    <select class="form-select social-platform">
+                                        <option value="linkedin" ${link.platform === 'linkedin' ? 'selected' : ''}>LinkedIn</option>
+                                        <option value="twitter" ${link.platform === 'twitter' ? 'selected' : ''}>Twitter / X</option>
+                                        <option value="github" ${link.platform === 'github' ? 'selected' : ''}>GitHub</option>
+                                        <option value="facebook" ${link.platform === 'facebook' ? 'selected' : ''}>Facebook</option>
+                                        <option value="instagram" ${link.platform === 'instagram' ? 'selected' : ''}>Instagram</option>
+                                        <option value="dribbble" ${link.platform === 'dribbble' ? 'selected' : ''}>Dribbble</option>
+                                        <option value="behance" ${link.platform === 'behance' ? 'selected' : ''}>Behance</option>
+                                        <option value="youtube" ${link.platform === 'youtube' ? 'selected' : ''}>YouTube</option>
+                                        <option value="tiktok" ${link.platform === 'tiktok' ? 'selected' : ''}>TikTok</option>
+                                        <option value="whatsapp" ${link.platform === 'whatsapp' ? 'selected' : ''}>WhatsApp</option>
+                                        <option value="medium" ${link.platform === 'medium' ? 'selected' : ''}>Medium</option>
+                                    </select>
+                                </div>
                                 <div class="col-md-7"><input type="url" class="form-control social-url" value="${link.profile_url}" required></div>
                             </div>`;
                         socialCont.appendChild(div);

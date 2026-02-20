@@ -3,8 +3,20 @@ const router = express.Router();
 const db = require('../config/db');
 
 // Render Index Page (Home)
-router.get('/', (req, res) => {
-    res.render('index');
+router.get('/', async (req, res) => {
+    try {
+        const [staffs] = await db.query(`
+            SELECT id, first_name, last_name, slug, title, profile_image 
+            FROM staffs 
+            WHERE is_active = TRUE 
+            ORDER BY is_featured DESC, created_at DESC 
+            LIMIT 3
+        `);
+        res.render('index', { staffs: staffs });
+    } catch (err) {
+        console.error('Error fetching staffs for home page:', err);
+        res.render('index', { staffs: [] });
+    }
 });
 
 // Render About Us Page
@@ -215,8 +227,67 @@ router.get('/staffs/:slug', async (req, res) => {
     }
 });
 
-// Render Manager Page (Dashboard for Courses & Staff)
-router.get('/manager', async (req, res) => {
+const bcrypt = require('bcryptjs');
+
+// Middleware to protect manager routes
+const isAdmin = (req, res, next) => {
+    if (req.session.isLoggedIn) {
+        next();
+    } else {
+        res.redirect('/manager/login');
+    }
+};
+
+// ... existing routes ...
+
+// Render Manager Login Page
+router.get('/manager/login', (req, res) => {
+    if (req.session.isLoggedIn) {
+        return res.redirect('/manager');
+    }
+    res.render('manager-login');
+});
+
+// Handle Manager Login
+router.post('/manager/login', async (req, res) => {
+    const { passphrase } = req.body;
+
+    try {
+        // Fetch the hashed passphrase from the database
+        const [rows] = await db.query(
+            "SELECT setting_value FROM app_settings WHERE setting_key = 'manager_passphrase'"
+        );
+
+        if (rows.length === 0) {
+            console.error('Manager passphrase not found in app_settings table');
+            return res.render('manager-login', { error: 'System configuration error. Please contact admin.' });
+        }
+
+        const hashedPassphrase = rows[0].setting_value;
+        const match = await bcrypt.compare(passphrase, hashedPassphrase);
+
+        if (match) {
+            req.session.isLoggedIn = true;
+            res.redirect('/manager');
+        } else {
+            res.render('manager-login', { error: 'Incorrect passphrase. Access denied.' });
+        }
+    } catch (err) {
+        console.error('Login error:', err);
+        res.render('manager-login', { error: 'An entry error occurred. Please try again.' });
+    }
+});
+
+// Logout Manager
+router.get('/manager/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) console.error('Logout error:', err);
+        res.redirect('/manager/login');
+    });
+});
+
+// Render Manager Page (Dashboard for Courses & Staff) - PROTECTED
+router.get('/manager', isAdmin, async (req, res) => {
     try {
         const [courses] = await db.query('SELECT * FROM courses ORDER BY created_at DESC');
         const [staff] = await db.query('SELECT * FROM staffs ORDER BY created_at DESC');

@@ -10,7 +10,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
 
@@ -563,15 +563,17 @@
               <% 
                 const socialIconMap = {
                   'linkedin': 'bi-linkedin',
-                  'twitter': 'bi-twitter',
+                  'twitter': 'bi-twitter-x',
                   'github': 'bi-github',
                   'behance': 'bi-behance',
                   'dribbble': 'bi-dribbble',
                   'instagram': 'bi-instagram',
                   'facebook': 'bi-facebook',
                   'medium': 'bi-medium',
-                  'codepen': 'bi-codepen',
-                  'stackoverflow': 'bi-stack-overflow'
+                  'youtube': 'bi-youtube',
+                  'tiktok': 'bi-tiktok',
+                  'whatsapp': 'bi-whatsapp',
+                  'threads': 'bi-threads'
                 };
                 if (staff.social_links && staff.social_links.length > 0) {
                   staff.social_links.forEach(link => {
@@ -608,7 +610,7 @@
               <div class="stat-text">Students Taught</div>
             </div>
             <div class="stat-card-minimal">
-              <div class="stat-number"><%= staff.average_rating %>/5</div>
+              <div class="stat-number"><%= Number(staff.average_rating || 0).toFixed(1) %>/5</div>
               <div class="stat-text">Average Rating</div>
             </div>
             <div class="stat-card-minimal">
@@ -664,7 +666,7 @@
                 <% } %>
               </div>
 
-              <!-- Courses -->
+              <!-- Courses 
               <div class="content-card">
                 <h3>Courses Taught</h3>
 
@@ -751,6 +753,7 @@
                   </div>
                 </div>
               </div>
+              -->
             </div>
 
             <!-- Sidebar -->

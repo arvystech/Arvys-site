@@ -10,7 +10,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/industrial-training.css" />
@@ -374,15 +374,17 @@
                 const fullName = `${staff.first_name} ${staff.last_name}`;
                 const socialIconMap = {
                   'linkedin': 'bi-linkedin',
-                  'twitter': 'bi-twitter',
+                  'twitter': 'bi-twitter-x',
                   'github': 'bi-github',
                   'behance': 'bi-behance',
                   'dribbble': 'bi-dribbble',
                   'instagram': 'bi-instagram',
                   'facebook': 'bi-facebook',
                   'medium': 'bi-medium',
-                  'codepen': 'bi-codepen',
-                  'stackoverflow': 'bi-stack-overflow'
+                  'youtube': 'bi-youtube',
+                  'tiktok': 'bi-tiktok',
+                  'whatsapp': 'bi-whatsapp',
+                  'threads': 'bi-threads'
                 };
               %>
                 <div class="col-lg-4 col-md-6">
@@ -407,7 +409,7 @@
                             <div class="stat-label">Students</div>
                           </div>
                           <div class="stat-item">
-                            <div class="stat-value"><%= staff.average_rating %></div>
+                            <div class="stat-value"><%= Number(staff.average_rating || 0).toFixed(1) %>/5</div>
                             <div class="stat-label">Rating</div>
                           </div>
                           <div class="stat-item">
