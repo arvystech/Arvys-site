@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const db = require('./config/db');
@@ -14,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
-    secret: 'arvys_secret_key_2024', // Should be in .env for production
+    secret: process.env.SESSION_SECRET || 'arvys_fallback_secret', // Use environment variable
     resave: false,
     saveUninitialized: false,
     cookie: {
